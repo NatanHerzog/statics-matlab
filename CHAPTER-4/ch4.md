@@ -9,4 +9,6 @@
 - Determine the resultant and the subsequent point of application for two- and three-dimensional distributed loads via integration using tabulated values
 
 ### MATLAB Parallel Objectives
-- 
+- Introduction to symbolics
+- Start with some structured examples
+- Working from skeleton code (comments)

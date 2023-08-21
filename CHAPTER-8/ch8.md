@@ -9,4 +9,4 @@
 - Solve statically indeterminate torsional loading problems using equilibrium and deformation equations
 
 ### MATLAB Parallel Objectives
-- 
+- Golden Section Search ("bisect" answer until reaching the solution) for statically indeterminate problems

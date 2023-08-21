@@ -11,4 +11,5 @@
 - Identify the difference between machines and frames, and analyze machines using equilibrium equations
 
 ### MATLAB Parallel Objectives
-- 
+- Optimization methods
+- Ex6 (piston problem, want torque as function of angular position)

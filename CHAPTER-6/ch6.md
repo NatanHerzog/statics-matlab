@@ -14,4 +14,7 @@
 - How to solve statically indeterminate systems using the Superposition Method
 
 ### MATLAB Parallel Objectives
-- 
+- Conditional statements (account for multiple types of stress)
+- Plotting
+- Nonlinear stress-strain functional relationship
+- In-line functions
