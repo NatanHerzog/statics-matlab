@@ -25,4 +25,17 @@ The MATLAB environment may be slightly intimidating if you are opening it for th
 <img src="../images/initial-matlab-environment.png" alt="initial MATLAB environment" width="500" />
 
 There are 4 general sections that will matter to us, 1 of which is currently hidden and we will get to shortly. You can see `Files`, `Workspace`, and `Command Window`.
+
+As you may imagine, the scripts that you write over time will show up in `Files`. `Workspace` houses any variables that get defined in your scripts. As you look through my examples, you can see that several things are listed there. And the `Command Window` is one place where you can write MATLAB code, but it is also the ouptut window for your scripts. We will be writing scripts.
+
+So, let's click on the `New Script` button in the top left. This will create a blank, unnamed script. You can save (Ctrl + s) and name it. Now we can write some code (refer to example script)
+
 ## Understand basic conditional looping
+
+Conditionals are an integral part of coding, but even more importantly, they're an integral part of being an engineer. Our job is pretty much entirely about making decisions based on the information we're given. `If this, then that`.
+
+In MATLAB, we can use `if` statements to check whether something is true or false and then to make a decision based on the result.
+
+But an `if` statement on its own might not be enough. You're designing a bridge that has to be strong enough without going over budget. That probably means going through several different designs. You have to repeat the same task a couple times, then "ask" if the new design is satisfactory. That's a loop!
+
+In MATLAB, we have two types of loops: `for` and `while`. When we know exactly how many times to perform an operation, `for` loops are our best friend. They're pretty simple to use. But as engineers, we usually don't know things like that ahead of time. In that case, `while` loops are super awesome. Check out the example to see how they're both used!
