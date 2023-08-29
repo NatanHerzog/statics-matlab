@@ -1,4 +1,4 @@
-% Practicing conditionals and looping
+% Practicing basic applications
 
 %% --------------- STEP 1 --------------- %%
 % [] Define any two variables, choose a mathematical operation 

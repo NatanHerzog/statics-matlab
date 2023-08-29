@@ -11,4 +11,6 @@
 ### MATLAB Parallel Objectives
 - Vectors in MATLAB
 - Vector operations: addition, subtraction, scalar product (dot product)
-- Vectorized algorithms in MATLAB
+- Vector normalization, unit vectors
+- Basic vectorized algorithms in MATLAB
+- Trig (degrees vs radians)
