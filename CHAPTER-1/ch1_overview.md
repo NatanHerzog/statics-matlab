@@ -8,4 +8,3 @@
 ### MATLAB Parallel Objectives
 - Gain access to MATLAB (either online or with the desktop client)
 - Write a `Hello World` script
-- Understand basic conditional looping

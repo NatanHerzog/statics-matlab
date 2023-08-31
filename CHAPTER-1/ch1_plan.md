@@ -32,5 +32,6 @@ So, let's click on the `New Script` button in the top left. This will create a b
 
 <img src="../images/matlab-environment-with-new-script.png" alt="MATLAB environment with the scripting window"/>
 
-Now we can write some code (refer to example script: `ch1_example.m`)
+You can see a new window has been created. This is where we can write some code (refer to example script: `ch1_example.m`). With this example, clicking the `Run` button, circled in purple in the ribbon at the top of the screen, will execute and print several statements to the `Command Window`. Be sure to read through the commented explanations for a thorough understanding of what each command does.
 
+When you are comfortable with the example, take a look at the practice script: `ch1_practice.m`. Here, you are given an outline of some tasks to accomplish, but no code. I encourage you to work with friends and look things up on the internet to become familiar with anything you do not already know how to do. As the semester progresses, I will introduce more advanced topics and being comfortable with looking up your questions is a very important skill.
