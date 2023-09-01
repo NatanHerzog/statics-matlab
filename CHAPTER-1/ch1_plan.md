@@ -24,7 +24,7 @@ The MATLAB environment may be slightly intimidating if you are opening it for th
 
 <img src="../images/initial-matlab-environment.png" alt="initial MATLAB environment"/>
 
-There are 4 general sections that will matter to us, 1 of which is currently hidden and we will get to shortly. You can see `Command Window` (1), `Files` (2), and `Workspace` (3).
+There are 4 general sections that will matter to us, one of which is currently hidden and we will get to shortly. You can see `Command Window` (1), `Files` (2), and `Workspace` (3).
 
 As you may imagine, the scripts that you write over time will show up in `Files`. `Workspace` houses any variables that get defined in your scripts. As you look through my examples, you can see that several things are listed there. And the `Command Window` is one place where you can write MATLAB code, but it is also the ouptut window for your scripts. We will be writing scripts.
 
