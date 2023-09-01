@@ -8,7 +8,7 @@
     - Because it's hosted on Mathworks' own servers, it is up-to-date and reliable
     - We won't be doing anything intense enough to warrant the potential advantages of the desktop client
     - Files are stored in your MATLAB Drive, so they can be accessed anywhere
-- Download the [Desktop Client](https://software.pitt.edu/Home/SoftwareSearch?SearchText=Matlab&PlatformId=0)
+- Download the [Desktop Client](https://software.pitt.edu/Home/SoftwareSearch?SearchText=Matlab&PlatformId=0) (click this link)
     - <img src="../images/sds-matlab-results.png" alt="search results"/>
     - This link takes you to Pitt's Software Download Service, where it provides instructions for installation *be sure to click into the correct one for your computer (windows, mac, or linux)*
     - The desktop client is a pretty beefy application, so make sure you have enough storage
