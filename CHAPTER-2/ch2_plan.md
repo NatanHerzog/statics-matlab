@@ -14,7 +14,9 @@ y = x.^2; % apply the equation (notice the . before the ^, it is important)
 plot(x,y) % graph
 ```
 
-But when you run that code, you don't really get a great graph. That's because the vector `x` only contains 5 input points and so does the output, `y`. I could type in more numbers by hand, but that is really tedious, so let's instead explore two methods for generating vectors automatically.
+<img src="../images/lowres-xsquared.png" alt="low resolution graph of y equals x squared"/>
+
+But as you can see, when you run that code, you don't really get a great graph. That's because the vector `x` only contains 5 input points and so does the output, `y`. I could type in more numbers by hand, but that is really tedious, so let's instead explore two methods for generating vectors automatically.
 
 ```MATLAB
 x1 = linspace(0,10); % this generates a vector between 0-10 with 100 points
@@ -41,14 +43,21 @@ y = x.^2; % apply the equation
 plot(x,y) % graph
 ```
 
+<img src="../images/highres-xsquared.png" alt="high resolution graph of y equals x squared"/>
+
 Fantastic!
 
-There are some times when it is useful to define vectors vertically, rather than horizontally.
+**Side Note**: There are some times when it is useful to define vectors in MATLAB vertically, rather than horizontally.
 
-For example:
+That looks as follows:
 ```MATLAB
 a = [1;2;3];
 ```
+**or**
+```MATLAB
+a = [1,2,3]';
+```
+
 will produce $$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
 
 We will not be getting into the applications for this right now, but it is good to know of its existence.
@@ -127,7 +136,7 @@ returns $$ b = \begin{bmatrix}3 & 6 & 9 \end{bmatrix} $$
 
 This operation multiplies every element in the vector `a` by 3 for you. Similarly, we can divide every element by 3 by simply applying $\frac{1}{3}$ as follows: `b = (1/3)*a` returns $$ b = \begin{bmatrix}0.3333 & 0.6666 & 1 \end{bmatrix} $$
 
-And finally, we can go over dot products in MATLAB! Hopefully this is where you start to recognize how much easier your life can be.
+And finally, we can go over dot and cross products in MATLAB! Hopefully this is where you start to recognize how much easier your life can be.
 
 When done by hand, a dot product entails multiplying corresponding components of the two vectors together and then taking the sum of all the multiples. For example:
 
@@ -146,6 +155,36 @@ dotProduct = dot(a, b)
 `output: dotProduct = 26`
 
 In this class, and in many others after, it is common to take the dot product between two vectors. While you can choose to do this by hand, you are more likely to make mistakes and it will take significantly longer than doing it in MATLAB. Especially when the dot product is only one piece of a much larger calculation.
+
+The cross product is also extremely common, especially in this course. When considering the moment created by a force $\vec{F}$ acting at a distance $\vec{r}$, we calculate $\vec{M} = \vec{r} \times \vec{F}$.
+
+When performed by hand, we have to go through the process of calculating the $3 \times 3$ determinant:
+
+$$\vec{M} = 
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k} \\
+r_x & r_y & r_z \\
+F_x & F_y & F_z \\
+\end{vmatrix}
+$$
+
+$$\vec{M} = 
+\left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}
+$$
+
+That's quite a process! In MATLAB, just like with `dot()`, there is a `cross()` function to make our lives easy and awesome.
+
+```MATLAB
+a = [3, 2, 1];
+b = [5, 4, 3];
+crossProduct = cross(a, b)
+```
+
+`output: crossProduct = [2, -4, 2]`
+
+This is a **SUPER** important tool for this class. Calculating the net moment is essential when evaluating the static conditions for a body.
+
+*Foreshadowing:* $\Sigma\vec{F}=\vec{0}$ *and* $\Sigma\vec{M}=\vec{0}$
 
 ## Unit Vectors
 
