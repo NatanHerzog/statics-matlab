@@ -194,7 +194,7 @@ Normalizing a vector involves two steps:
     $$
     \vec{v}=
     \begin{bmatrix}
-    a,& b,& c \\
+    a, & b, & c
     \end{bmatrix}
     $$
     
@@ -205,7 +205,7 @@ Normalizing a vector involves two steps:
     $$
     \hat{u} = 
     \begin{bmatrix}
-    \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert} \\
+    \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert}
     \end{bmatrix}
     $$
 
