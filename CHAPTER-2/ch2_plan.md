@@ -60,7 +60,11 @@ a = [1,2,3]';
 
 will produce 
 
-$$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
+$$a = \begin{bmatrix}
+1 \\ 
+2 \\ 
+3 
+\end{bmatrix}$$
 
 We will not be getting into the applications for this right now, but it is good to know of its existence.
 
@@ -114,7 +118,11 @@ c = a - b;
 
 In this case, `a` is transposed, while `b` remains as it was.
 
-$$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
+$$a = \begin{bmatrix}
+1 \\ 
+2 \\ 
+3 
+\end{bmatrix}$$
 
 $$b = \begin{bmatrix}3, & 2, & 1 \end{bmatrix}$$
 
