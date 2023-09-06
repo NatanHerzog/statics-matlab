@@ -58,7 +58,7 @@ a = [1;2;3];
 a = [1,2,3]';
 ```
 
-will produce $$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
+will produce $$a = \begin{bmatrix}1 & 2 & 3 \end{bmatrix}$$
 
 We will not be getting into the applications for this right now, but it is good to know of its existence.
 
