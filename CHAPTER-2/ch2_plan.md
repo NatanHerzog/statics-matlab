@@ -58,11 +58,17 @@ a = [1;2;3];
 a = [1,2,3]';
 ```
 
-will produce $$a = \begin{bmatrix}1 & 2 & 3 \end{bmatrix}$$
+will produce 
+
+$$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
 
 We will not be getting into the applications for this right now, but it is good to know of its existence.
 
-Now that we are generally familiar with vectors, let's get back to the 3D use case. A vector $$\vec{v}= 4\hat{i} + 8\hat{j} + 3\hat{k}$$ can be written in MATLAB as follows: `v = [4, 8, 3]`. And the awesome part about MATLAB is that we can also perform operations on it, just like with vectors in pen and paper math.
+Now that we are generally familiar with vectors, let's get back to the 3D use case. A vector 
+
+$$\vec{v}= 4\hat{i} + 8\hat{j} + 3\hat{k}$$ 
+
+can be written in MATLAB as follows: `v = [4, 8, 3]`. And the awesome part about MATLAB is that we can also perform operations on it, just like with vectors in pen and paper math.
 
 ## Vector Operations
 
@@ -109,9 +115,11 @@ c = a - b;
 In this case, `a` is transposed, while `b` remains as it was.
 
 $$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
+
 $$b = \begin{bmatrix}3, & 2, & 1 \end{bmatrix}$$
 
-This time, the output of `c = a - b` is a matrix, which we haven't covered yet: 
+This time, the output of `c = a - b` is a matrix, which we haven't covered yet:
+
 $$c =
 \begin{bmatrix}
 -2 & -1 & 0 \\
@@ -124,24 +132,35 @@ So make sure your vectors are oriented the same way!
 
 Now that we've covered basic vector addition and subtraction, let's get into applying a scalar multiple to a vector.
 
-In regular math, performing the following operation requires multiplying each element individually: $$ \vec{a} = \begin{bmatrix}1, & 2, & 3 \end{bmatrix} $$ $$\vec{b} = 3 \vec{a} = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
+In regular math, performing the following operation requires multiplying each element individually: 
 
-In MATLAB, 
+$$ \vec{a} = \begin{bmatrix}1, & 2, & 3 \end{bmatrix} $$
+
+$$\vec{b} = 3 \vec{a} = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
+
+In MATLAB,
+
 ```MATLAB
 a = [1, 2, 3]
 b = a.*3
 ```
 
-returns $$ b = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
+returns
 
-This operation multiplies every element in the vector `a` by 3 for you. Similarly, we can divide every element by 3 by simply applying $\frac{1}{3}$ as follows: `b = a.*(1/3)` returns $$ b = \begin{bmatrix}0.3333, & 0.6666, & 1 \end{bmatrix} $$
+$$ b = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
+
+This operation multiplies every element in the vector `a` by 3 for you. Similarly, we can divide every element by 3 by simply applying $\frac{1}{3}$ as follows: `b = a.*(1/3)` returns
+
+$$ b = \begin{bmatrix}0.3333, & 0.6666, & 1 \end{bmatrix} $$
 
 And finally, we can go over dot and cross products in MATLAB! Hopefully this is where you start to recognize how much easier your life can be.
 
 When done by hand, a dot product entails multiplying corresponding components of the two vectors together and then taking the sum of all the multiples. For example:
 
 $$\vec{a} = 3\hat{i} + 2\hat{j} + 1\hat{k}$$
+
 $$\vec{b} = 5\hat{i} + 4\hat{j} + 3\hat{k}$$
+
 $$\vec{a}\cdot\vec{b} = (3)(5) + (2)(4) + (1)(3) = 26$$
 
 In MATLAB, we just have a built-in function to perform the exact same operation! The `dot()` command takes two vectors of the same size as inputs and will return the operation detailed above.
@@ -162,10 +181,13 @@ In engineering, we often need to know directions for various things. For example
 
 Normalizing a vector involves two steps:
 1. Calculate the magnitude of the vector
-    - Recall for $\vec{v}=\begin{bmatrix}a,&b,&c\end{bmatrix}$
-    - $\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$
+    - Recall:
+    $$\vec{v}=\begin{bmatrix}a,&b,&c\end{bmatrix}$$
+    
+    $$\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$$
+
 2. Divide each component of the vector by the magnitude
-    - $\hat{u} = \begin{bmatrix}\frac{a}{\Vert\vec{v}\Vert},&\frac{b}{\Vert\vec{v}\Vert},&\frac{c}{\Vert\vec{v}\Vert}\end{bmatrix}$
+    $$\hat{u} = \begin{bmatrix} \frac{a}{\Vert\vec{v}\Vert},&\frac{b}{\Vert\vec{v}\Vert},&\frac{c}{\Vert\vec{v}\Vert}\end{bmatrix}$$
 
 Performing this calculation by hand can be tedious, especially when you have to normalize multiple vectors. However, it is incredibly simple in MATLAB:
 
@@ -181,7 +203,9 @@ In this example, the command `norm(<input vector>)` calculates the magnitude of 
 
 So now, if we have a force that is described by the vector:
 
-$$\vec{F} = \begin{bmatrix} 17, & 12, & 35 \end{bmatrix} [\mathrm{N}] $$
+$$\vec{F} = \begin{bmatrix} 
+17, & 12, & 35 
+\end{bmatrix} [\mathrm{N}] $$
 
 we can use the `norm()` command to get a better understanding of what this information actually means in the real world.
 
@@ -201,7 +225,11 @@ direction = F./magnitude
 
 Thus, we can reinterpret $\vec{F}$ as follows:
 
-$\vec{F}$ is a force of $40.7185 \, [\mathrm{N}]$ acting along the direction $\hat{u} = \begin{bmatrix} 0.4175, & 0.2947, & 0.8596 \end{bmatrix}$
+$\vec{F}$ is a force of $40.7185 \, [\mathrm{N}]$ acting along the direction:
+
+$$\hat{u} = \begin{bmatrix}
+0.4175, & 0.2947, & 0.8596 
+\end{bmatrix}$$
 
 $\vec{F} = \left(40.7185 \, [\mathrm{N}]\right)\hat{u}$
 
