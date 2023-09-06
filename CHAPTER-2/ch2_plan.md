@@ -193,7 +193,7 @@ Normalizing a vector involves two steps:
 
     $$\vec{v}=
     \begin{bmatrix}
-    a,&b,&c
+    a,& b,& c
     \end{bmatrix}$$
     
     $$\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$$
@@ -202,7 +202,7 @@ Normalizing a vector involves two steps:
 
     $$\hat{u} = 
     \begin{bmatrix}
-    \frac{a}{\Vert\vec{v}\Vert},&\frac{b}{\Vert\vec{v}\Vert},&\frac{c}{\Vert\vec{v}\Vert}
+    \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert}
     \end{bmatrix}$$
 
 Performing this calculation by hand can be tedious, especially when you have to normalize multiple vectors. However, it is incredibly simple in MATLAB:
