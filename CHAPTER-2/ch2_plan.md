@@ -149,10 +149,10 @@ In MATLAB, we just have a built-in function to perform the exact same operation!
 ```MATLAB
 a = [3, 2, 1];
 b = [5, 4, 3];
-dotProduct = dot(a, b)
+dot(a, b)
 ```
 
-`output: dotProduct = 26`
+`output: ans = 26`
 
 In this class, and in many others after, it is common to take the dot product between two vectors. While you can choose to do this by hand, you are more likely to make mistakes and it will take significantly longer than doing it in MATLAB. Especially when the dot product is only one piece of a much larger calculation.
 
@@ -177,29 +177,34 @@ That's quite a process! In MATLAB, just like with `dot()`, there is a `cross()` 
 ```MATLAB
 a = [3, 2, 1];
 b = [5, 4, 3];
-crossProduct = cross(a, b)
+cross(a, b)
 ```
 
-`output: crossProduct = [2, -4, 2]`
+`output: ans = [2, -4, 2]`
 
 This is a **SUPER** important tool for this class. Calculating the net moment is essential when evaluating the static conditions for a body.
 
-*Foreshadowing:* $\Sigma\vec{F}=\vec{0}$ *and* $\Sigma\vec{M}=\vec{0}$
+*Foreshadowing:* $\Sigma\vec{F}=\vec{0}$, $\Sigma\vec{M}=\vec{0}$ must be true in all dimensions for a static structure. One important example, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way.
+
+This is the reason that we are building these skills now.
 
 ## Unit Vectors
 
 In engineering, we often need to know directions for various things. For example, the direction along which a force is acting, or the direction in which an object is moving. These are best reported as "unit vectors," which have a magnitude $\lvert \vec{u} \rvert=1$. In general, these vectors can be referred to as having been "normalized".
 
 Normalizing a vector involves two steps:
-1. Calculate the magnitude of the vector (recall Pythagorean's theorem)
+1. Calculate the magnitude of the vector
+    - Recall for $\vec{v}=\begin{bmatrix}a&b&c\end{bmatrix}$
+    - $\lvert\vec{v}\rvert=\sqrt{a^2+b^2+c^2}$
 2. Divide each component of the vector by the magnitude
+    - $\hat{u} = \begin{bmatrix}\frac{a}{\lvert\vec{v}\rvert}&\frac{b}{\lvert\vec{v}\rvert}&\frac{c}{\lvert\vec{v}\rvert}\end{bmatrix}$
 
-Performing this calculation by hand can be tedious. However, it is incredibly simple in MATLAB:
+Performing this calculation by hand can be tedious, especially when you have to normalize multiple vectors. However, it is incredibly simple in MATLAB:
 
 ```MATLAB
-a = [1, 2, 3]; % define a
+a = [1, 2, 3]; % define vector, a
 magnitude = norm(a); % calculate the magnitude of a
-normalized = a./magnitude % divide a by its magnitude
+normalized = a./magnitude % divide each component by the magnitude
 ```
 
 `output: normalized = [0.2673 0.5345 0.8018]`
@@ -210,10 +215,12 @@ So now, if we have a force that is described by the vector:
 
 $$\vec{F} = \begin{bmatrix} 17 & 12 & 35 \end{bmatrix} [N] $$
 
-we can use the `norm()` command to get a better understanding of what this actually means.
+we can use the `norm()` command to get a better understanding of what this information actually means in the real world.
+
+Recall our steps:
 
 1. Determine $\lvert\vec{F}\rvert$
-2. Calculate the unit (direction) vector
+2. Calculate the unit (direction) vector, $\hat{u}$
 3. Rewrite $\vec{F}$ to have a more useful physical interpretation
 
 ```MATLAB
@@ -224,17 +231,29 @@ direction = F./magnitude
 
 `output: magnitude = 40.7185 and direction = [0.4175 0.2947 0.8596]`
 
-Thus, we can reinterpret $\vec{F}$ to as follows:
+Thus, we can reinterpret $\vec{F}$ as follows:
 
 $\vec{F}$ is a force of $40.7185[N]$ acting along the direction $\hat{u} = \begin{bmatrix} 0.4175 & 0.2947 & 0.8596 \end{bmatrix}$
 
+$\vec{F} = \left(40.7185[N]\right)\hat{u}$
+
 ## Vectorized Operations
 
-In some of the previous notes, you will have hopefully seen that I occasionally put a `.` before an operation. From the example above: `direction = F./magnitude`. This denotes a "vectorized" operation, which means that the operation - dividing by `magnitude`, in this example - is applied to every element of the vector - `F`, in this example - individually.
+In some of the previous notes, you will have hopefully seen that I occasionally put a `.` before an operation. From the example above: `direction = F./magnitude`. This denotes a "vectorized" operation, which means that the operation (dividing by `magnitude`, in this example) is applied to every element of the vector (`F`, in this example) individually.
 
-So, `F./magnitude` is really performing the following operation: `[F(1)/magnitude, F(2)/magnitude, F(3)/magnitude]` <span style="font-size:12px">(`F(1) references the first element of F`)</span>.
+So, `F./magnitude` is really performing the following operation: 
 
-Why does this matter? This functionality allows you act on entire vectors at the same time, which saves you from either manually writing each individual operation or using some other, longer technique to accomplish the same thing.
+$$
+\begin{bmatrix}
+\frac{F_x}{\lvert\vec{F}\rvert} & \frac{F_y}{\lvert\vec{F}\rvert} & \frac{F_z}{\lvert\vec{F}\rvert}
+\end{bmatrix}
+$$
+
+**Why does this matter?**
+
+This functionality allows you act on entire vectors at the same time, which saves you from either manually writing each individual operation or using some other, longer technique to accomplish the same thing.
+
+We will continue using this in the future.
 
 ## Trig in MATLAB
 
@@ -244,7 +263,7 @@ Trigonometry in MATLAB is basically the same as it would be in your calculator. 
 
 `sind(90) = 1`
 
-For every trigonometric function, the appended `d` signifies that the input is taken in degrees. Otherwise, the input is radians. This rule applies to inverse trigonometric functions as well.
+For every trigonometric function, the name includes a `d` at the end to signify that the input is taken in degrees. Otherwise, the input is radians. This rule applies to inverse trigonometric functions as well.
 
 `asin(1) = pi/2`
 
@@ -254,19 +273,23 @@ In our course right now, this is relevant for determining the angle between two 
 
 $$ \cos{\theta} = \frac{\vec{a} \cdot \vec{b} }{\lvert\vec{a}\rvert\lvert\vec{b}\rvert} $$
 
-which transforms into
+which transforms into:
 
 $$ \theta = \arccos{\frac{\vec{a} \cdot \vec{b} }{\lvert\vec{a}\rvert\lvert\vec{b}\rvert}} $$
 
 In MATLAB:
 
 ```MATLAB
-a = [1, 2, 3];
-b = [3, 2, 1];
+a = [1, 2, 3]; % define vector a
+b = [3, 2, 1]; % define vector b
+
+% calculate the numerator and denominator in the formula
 numerator = dot(a,b);
 denominator = norm(a) * norm(b);
-thetaRadians = acos(numerator / denominator)
-thetaDegrees = acosd(numerator / denominator)
+
+% calculate the angle in radians and degrees
+thetaRadians = acos(numerator / denominator) % radians
+thetaDegrees = acosd(numerator / denominator) % degrees
 ```
 
 `output: thetaRadians = 0.7752 and thetaDegrees = 44.4153`

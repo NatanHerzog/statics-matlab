@@ -1,7 +1,7 @@
 %% Vectors in MATLAB
 
 clear all
-% close all
+close all
 clc
 
 % brief introduction to what a vector is
@@ -29,27 +29,35 @@ sum = a + b % vector addition
 
 difference = a - b % vector subtraction
 
-scaleUp = 3*a
-scaleDown = (1/3)*a
+scaleUp = 3*a % scaling a vector up by some multiple (3, in this case)
+scaleDown = (1/3)*a % scaling a vector down by some multiple (1/3, in this case)
 
-dotProduct = dot(a,b)
+dotProduct = dot(a,b) % syntax for taking the dot product between two vectors
+crossProduct = cross(a,b) % syntax for taking the cross product between two vectors
 
 %% Unit Vectors
 
-magnitude = norm(a)
+magnitude = norm(a) % calculate the magnitude
 unitA = a./magnitude % this is a vectorized operation
+
+normUnit = norm(unitA) % note that this result is 1!
 
 %% Trig
 
 sin(pi/2)
-sind(90)
+sind(90) % note the 'd' at the end of the trig function for degrees
 
 asin(1)
-asind(1)
+asind(1) % note the 'd' at the end of the trig function for degrees
 
+% define vectors to calculate the angle between
 a = [1, 2, 3];
 b = [3, 2, 1];
+
+% calculate the numerator and denominator in the formula
 numerator = dot(a,b);
 denominator = norm(a) * norm(b);
+
+% calculate the angle in radians and degrees
 thetaRadians = acos(numerator / denominator)
 thetaDegrees = acosd(numerator / denominator)
