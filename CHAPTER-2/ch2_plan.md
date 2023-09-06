@@ -191,19 +191,23 @@ Normalizing a vector involves two steps:
 1. Calculate the magnitude of the vector
     - Recall:
 
-    $$\vec{v}=
+    $$
+    \vec{v}=
     \begin{bmatrix}
-    a,& b,& c
-    \end{bmatrix}$$
+    a,& b,& c \\
+    \end{bmatrix}
+    $$
     
     $$\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$$
 
 2. Divide each component of the vector by the magnitude
 
-    $$\hat{u} = 
+    $$
+    \hat{u} = 
     \begin{bmatrix}
-    \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert}
-    \end{bmatrix}$$
+    \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert} \\
+    \end{bmatrix}
+    $$
 
 Performing this calculation by hand can be tedious, especially when you have to normalize multiple vectors. However, it is incredibly simple in MATLAB:
 
