@@ -2,7 +2,7 @@
 
 ## Vectors in MATLAB
 
-With pen and paper, we often write vectors as the following: $$\vec{v}=(a,b,c)$$ to represent the 3D spatial vector: $$\vec{v}= a\hat{i} + b\hat{j} + c\hat{k}$$
+With pen and paper, we often write vectors as the following: $$\vec{v}=(a, \, b, \, c)$$ to represent the 3D spatial vector: $$\vec{v}= a\hat{i} + b\hat{j} + c\hat{k}$$
 
 In MATLAB, we can do the same thing, but in the editor it is written as `v = [a,b,c]`. In MATLAB, vectors act as a way to store information and can be used for our usual 3D purposes, but can also be extended much further than that.
 
@@ -109,7 +109,7 @@ c = a - b;
 In this case, `a` is transposed, while `b` remains as it was.
 
 $$a = \begin{bmatrix}1 \\ 2 \\ 3 \end{bmatrix}$$
-$$b = \begin{bmatrix}3 & 2 & 1 \end{bmatrix}$$
+$$b = \begin{bmatrix}3, & 2, & 1 \end{bmatrix}$$
 
 This time, the output of `c = a - b` is a matrix, which we haven't covered yet: 
 $$c =
@@ -124,17 +124,17 @@ So make sure your vectors are oriented the same way!
 
 Now that we've covered basic vector addition and subtraction, let's get into applying a scalar multiple to a vector.
 
-In regular math, performing the following operation requires multiplying each element individually: $$ \vec{a} = \begin{bmatrix}1 & 2 & 3 \end{bmatrix} $$ $$\vec{b} = 3 \vec{a} = \begin{bmatrix}3 & 6 & 9 \end{bmatrix} $$
+In regular math, performing the following operation requires multiplying each element individually: $$ \vec{a} = \begin{bmatrix}1, & 2, & 3 \end{bmatrix} $$ $$\vec{b} = 3 \vec{a} = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
 
 In MATLAB, 
 ```MATLAB
 a = [1, 2, 3]
-b = 3*a
+b = a.*3
 ```
 
-returns $$ b = \begin{bmatrix}3 & 6 & 9 \end{bmatrix} $$
+returns $$ b = \begin{bmatrix}3, & 6, & 9 \end{bmatrix} $$
 
-This operation multiplies every element in the vector `a` by 3 for you. Similarly, we can divide every element by 3 by simply applying $\frac{1}{3}$ as follows: `b = (1/3)*a` returns $$ b = \begin{bmatrix}0.3333 & 0.6666 & 1 \end{bmatrix} $$
+This operation multiplies every element in the vector `a` by 3 for you. Similarly, we can divide every element by 3 by simply applying $\frac{1}{3}$ as follows: `b = a.*(1/3)` returns $$ b = \begin{bmatrix}0.3333, & 0.6666, & 1 \end{bmatrix} $$
 
 And finally, we can go over dot and cross products in MATLAB! Hopefully this is where you start to recognize how much easier your life can be.
 
@@ -156,48 +156,16 @@ dot(a, b)
 
 In this class, and in many others after, it is common to take the dot product between two vectors. While you can choose to do this by hand, you are more likely to make mistakes and it will take significantly longer than doing it in MATLAB. Especially when the dot product is only one piece of a much larger calculation.
 
-The cross product is also extremely common, especially in this course. When considering the moment created by a force $\vec{F}$ acting at a distance $\vec{r}$, we calculate $\vec{M} = \vec{r} \times \vec{F}$.
-
-When performed by hand, we have to go through the process of calculating the $3 \times 3$ determinant:
-
-$$\vec{M} = 
-\begin{vmatrix}
-\hat{i} & \hat{j} & \hat{k} \\
-r_x & r_y & r_z \\
-F_x & F_y & F_z \\
-\end{vmatrix}
-$$
-
-$$\vec{M} = 
-\left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}
-$$
-
-That's quite a process! In MATLAB, just like with `dot()`, there is a `cross()` function to make our lives easy and awesome.
-
-```MATLAB
-a = [3, 2, 1];
-b = [5, 4, 3];
-cross(a, b)
-```
-
-`output: ans = [2, -4, 2]`
-
-This is a **SUPER** important tool for this class. Calculating the net moment is essential when evaluating the static conditions for a body.
-
-*Foreshadowing:* $\Sigma\vec{F}=\vec{0}$, $\Sigma\vec{M}=\vec{0}$ must be true in all dimensions for a static structure. One important example, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way.
-
-This is the reason that we are building these skills now.
-
 ## Unit Vectors
 
-In engineering, we often need to know directions for various things. For example, the direction along which a force is acting, or the direction in which an object is moving. These are best reported as "unit vectors," which have a magnitude $\lvert \vec{u} \rvert=1$. In general, these vectors can be referred to as having been "normalized".
+In engineering, we often need to know directions for various things. For example, the direction along which a force is acting, or the direction in which an object is moving. These are best reported as "unit vectors," which have a magnitude $\Vert \vec{u} \Vert=1$. In general, these vectors can be referred to as having been "normalized".
 
 Normalizing a vector involves two steps:
 1. Calculate the magnitude of the vector
-    - Recall for $\vec{v}=\begin{bmatrix}a&b&c\end{bmatrix}$
-    - $\lvert\vec{v}\rvert=\sqrt{a^2+b^2+c^2}$
+    - Recall for $\vec{v}=\begin{bmatrix}a,&b,&c\end{bmatrix}$
+    - $\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$
 2. Divide each component of the vector by the magnitude
-    - $\hat{u} = \begin{bmatrix}\frac{a}{\lvert\vec{v}\rvert}&\frac{b}{\lvert\vec{v}\rvert}&\frac{c}{\lvert\vec{v}\rvert}\end{bmatrix}$
+    - $\hat{u} = \begin{bmatrix}\frac{a}{\Vert\vec{v}\Vert},&\frac{b}{\Vert\vec{v}\Vert},&\frac{c}{\Vert\vec{v}\Vert}\end{bmatrix}$
 
 Performing this calculation by hand can be tedious, especially when you have to normalize multiple vectors. However, it is incredibly simple in MATLAB:
 
@@ -207,19 +175,19 @@ magnitude = norm(a); % calculate the magnitude of a
 normalized = a./magnitude % divide each component by the magnitude
 ```
 
-`output: normalized = [0.2673 0.5345 0.8018]`
+`output: normalized = [0.2673, 0.5345, 0.8018]`
 
 In this example, the command `norm(<input vector>)` calculates the magnitude of the input vector for you!
 
 So now, if we have a force that is described by the vector:
 
-$$\vec{F} = \begin{bmatrix} 17 & 12 & 35 \end{bmatrix} [N] $$
+$$\vec{F} = \begin{bmatrix} 17, & 12, & 35 \end{bmatrix} [\mathrm{N}] $$
 
 we can use the `norm()` command to get a better understanding of what this information actually means in the real world.
 
 Recall our steps:
 
-1. Determine $\lvert\vec{F}\rvert$
+1. Determine $\Vert\vec{F}\Vert$
 2. Calculate the unit (direction) vector, $\hat{u}$
 3. Rewrite $\vec{F}$ to have a more useful physical interpretation
 
@@ -229,13 +197,13 @@ magnitude = norm(F)
 direction = F./magnitude
 ```
 
-`output: magnitude = 40.7185 and direction = [0.4175 0.2947 0.8596]`
+`output: magnitude = 40.7185 and direction = [0.4175, 0.2947, 0.8596]`
 
 Thus, we can reinterpret $\vec{F}$ as follows:
 
-$\vec{F}$ is a force of $40.7185[N]$ acting along the direction $\hat{u} = \begin{bmatrix} 0.4175 & 0.2947 & 0.8596 \end{bmatrix}$
+$\vec{F}$ is a force of $40.7185 \, [\mathrm{N}]$ acting along the direction $\hat{u} = \begin{bmatrix} 0.4175, & 0.2947, & 0.8596 \end{bmatrix}$
 
-$\vec{F} = \left(40.7185[N]\right)\hat{u}$
+$\vec{F} = \left(40.7185 \, [\mathrm{N}]\right)\hat{u}$
 
 ## Vectorized Operations
 
@@ -245,7 +213,7 @@ So, `F./magnitude` is really performing the following operation:
 
 $$
 \begin{bmatrix}
-\frac{F_x}{\lvert\vec{F}\rvert} & \frac{F_y}{\lvert\vec{F}\rvert} & \frac{F_z}{\lvert\vec{F}\rvert}
+\frac{F_x}{\Vert\vec{F}\Vert}, & \frac{F_y}{\Vert\vec{F}\Vert}, & \frac{F_z}{\Vert\vec{F}\Vert}
 \end{bmatrix}
 $$
 
@@ -271,11 +239,11 @@ For every trigonometric function, the name includes a `d` at the end to signify 
 
 In our course right now, this is relevant for determining the angle between two vectors. The formula for this calculation is as follows:
 
-$$ \cos{\theta} = \frac{\vec{a} \cdot \vec{b} }{\lvert\vec{a}\rvert\lvert\vec{b}\rvert} $$
+$$ \cos{\theta} = \frac{\vec{a} \cdot \vec{b} }{\Vert\vec{a}\Vert\Vert\vec{b}\Vert} $$
 
 which transforms into:
 
-$$ \theta = \arccos{\frac{\vec{a} \cdot \vec{b} }{\lvert\vec{a}\rvert\lvert\vec{b}\rvert}} $$
+$$ \theta = \arccos{\frac{\vec{a} \cdot \vec{b} }{\Vert\vec{a}\Vert\Vert\vec{b}\Vert}} $$
 
 In MATLAB:
 

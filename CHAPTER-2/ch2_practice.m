@@ -11,9 +11,6 @@
 
 %% --------------- STEP-BY-STEP 2 --------------- %%
 % [] Define unit direction vectors corresponding to each of the three cartesian axes (x, y, z)
-% [] Pick two of them (say, x and y) and perform the cross product
-%       - Observe that the result is equal to the third vector, which you did not pick
-%       - If it is negative, that just means you did not obey right-hand twisting so the result is flipped. That's okay!
 % [] Now, perform the dot product between them
 %       - Observe the result and consider its physical meaning (hint: think back to the angle formula!)
 % [] By combining vector addition, subtraction, and scalar multiplication, create two new vectors in terms of the three unit direction vectors
