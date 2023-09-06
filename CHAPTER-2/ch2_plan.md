@@ -192,10 +192,11 @@ Normalizing a vector involves two steps:
     - Recall:
 
     $$
-    \vec{v}=
-    \begin{bmatrix}
+    \vec{v}= \left[
+    \begin{matrix}
     a, & b, & c
-    \end{bmatrix}
+    \end{matrix}
+    \right]
     $$
     
     $$\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$$
