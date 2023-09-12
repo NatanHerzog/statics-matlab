@@ -12,3 +12,4 @@
 ### MATLAB Parallel Objectives
 - Vector operations: vector product (cross product)
 - Vectorized cross products
+- Vector projection
