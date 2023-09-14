@@ -50,27 +50,32 @@ Fantastic!
 **Side Note**: There are some times when it is useful to define vectors in MATLAB vertically, rather than horizontally.
 
 That looks as follows:
+
 ```MATLAB
 a = [1;2;3];
 ```
-**or**
+
+or
+
 ```MATLAB
 a = [1,2,3]';
 ```
 
-will produce 
+will produce
 
-$$a = \begin{bmatrix}
-1 \\ 
-2 \\ 
-3 
-\end{bmatrix}$$
+$$
+a = \begin{bmatrix}
+1 \\
+2 \\
+3
+\end{bmatrix}
+$$
 
 We will not be getting into the applications for this right now, but it is good to know of its existence.
 
-Now that we are generally familiar with vectors, let's get back to the 3D use case. A vector 
+Now that we are generally familiar with vectors, let's get back to the 3D use case. A vector
 
-$$\vec{v}= 4\hat{i} + 8\hat{j} + 3\hat{k}$$ 
+$$\vec{v}= 4\hat{i} + 8\hat{j} + 3\hat{k}$$
 
 can be written in MATLAB as follows: `v = [4, 8, 3]`. And the awesome part about MATLAB is that we can also perform operations on it, just like with vectors in pen and paper math.
 
@@ -87,6 +92,7 @@ a = [1, 2, 3];
 b = [3, 2, 1];
 c = a + b
 ```
+
 `output: c = [4, 4, 4]`
 
 And subtracting two vectors is equally simple:
@@ -96,6 +102,7 @@ a = [1, 2, 3];
 b = [3, 2, 1];
 c = a - b
 ```
+
 `output: c = [-2, 0, 2]`
 
 MATLAB handles the element-wise calculations for you! It is important to make sure that the vectors involved have the same dimensions. The following will not work:
@@ -119,9 +126,9 @@ c = a - b;
 In this case, `a` is transposed, while `b` remains as it was.
 
 $$a = \begin{bmatrix}
-1 \\ 
-2 \\ 
-3 
+1 \\
+2 \\
+3
 \end{bmatrix}$$
 
 $$b = \begin{bmatrix}3, & 2, & 1 \end{bmatrix}$$
@@ -140,7 +147,7 @@ So make sure your vectors are oriented the same way!
 
 Now that we've covered basic vector addition and subtraction, let's get into applying a scalar multiple to a vector.
 
-In regular math, performing the following operation requires multiplying each element individually: 
+In regular math, performing the following operation requires multiplying each element individually:
 
 $$ \vec{a} = \begin{bmatrix}1, & 2, & 3 \end{bmatrix} $$
 
@@ -188,7 +195,9 @@ In this class, and in many others after, it is common to take the dot product be
 In engineering, we often need to know directions for various things. For example, the direction along which a force is acting, or the direction in which an object is moving. These are best reported as "unit vectors," which have a magnitude $\Vert \vec{u} \Vert=1$. In general, these vectors can be referred to as having been "normalized".
 
 Normalizing a vector involves two steps:
+
 1. Calculate the magnitude of the vector
+
     - Recall:
 
 $$
@@ -197,13 +206,13 @@ $$
 a, & b, & c
 \end{bmatrix}
 $$
-    
+
 $$\Vert\vec{v}\Vert=\sqrt{a^2+b^2+c^2}$$
 
 2. Divide each component of the vector by the magnitude
 
 $$
-\hat{u} = 
+\hat{u} =
 \begin{bmatrix}
 \frac{a}{\Vert\vec{v}\Vert}, & \frac{b}{\Vert\vec{v}\Vert}, & \frac{c}{\Vert\vec{v}\Vert}
 \end{bmatrix}
@@ -223,8 +232,8 @@ In this example, the command `norm(<input vector>)` calculates the magnitude of 
 
 So now, if we have a force that is described by the vector:
 
-$$\vec{F} = \begin{bmatrix} 
-17, & 12, & 35 
+$$\vec{F} = \begin{bmatrix}
+17, & 12, & 35
 \end{bmatrix} [\mathrm{N}] $$
 
 we can use the `norm()` command to get a better understanding of what this information actually means in the real world.
@@ -248,7 +257,7 @@ Thus, we can reinterpret $\vec{F}$ as follows:
 $\vec{F}$ is a force of $40.7185 \, [\mathrm{N}]$ acting along the direction:
 
 $$\hat{u} = \begin{bmatrix}
-0.4175, & 0.2947, & 0.8596 
+0.4175, & 0.2947, & 0.8596
 \end{bmatrix}$$
 
 $\vec{F} = \left(40.7185 \, [\mathrm{N}]\right)\hat{u}$
@@ -257,7 +266,7 @@ $\vec{F} = \left(40.7185 \, [\mathrm{N}]\right)\hat{u}$
 
 In some of the previous notes, you will have hopefully seen that I occasionally put a `.` before an operation. From the example above: `direction = F./magnitude`. This denotes a "vectorized" operation, which means that the operation (dividing by `magnitude`, in this example) is applied to every element of the vector (`F`, in this example) individually.
 
-So, `F./magnitude` is really performing the following operation: 
+So, `F./magnitude` is really performing the following operation:
 
 $$
 \begin{bmatrix}

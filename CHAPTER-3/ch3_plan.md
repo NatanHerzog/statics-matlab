@@ -1,6 +1,5 @@
 # Objectives
 
-
 ## Vector Projection
 
 In the last chapter, we introduced the dot product. One of its most powerful uses is for decomposing vectors into their projections along the directions we care about.
@@ -47,7 +46,7 @@ Like the dot product, the cross product is extremely common, especially in this 
 
 When performed by hand, we have to go through the tedious process of calculating the $3 \times 3$ determinant:
 
-$$\vec{M} = 
+$$\vec{M} =
 \begin{vmatrix}
 \hat{i} & \hat{j} & \hat{k} \\
 r_x & r_y & r_z \\
@@ -55,7 +54,7 @@ F_x & F_y & F_z \\
 \end{vmatrix}
 $$
 
-$$\vec{M} = 
+$$\vec{M} =
 \left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}
 $$
 
@@ -74,50 +73,3 @@ This is a **SUPER** important tool for this class. For a body to be static, it m
 *Foreshadowing:* $\Sigma\vec{F}=\vec{0}$, $\Sigma\vec{M}_o=\vec{0}$ must be true in all dimensions for a static structure. One important example, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way. This would be bad :)
 
 This is the reason that we are building these skills now.
-
-## Vectorized Cross Product
-
-Just like last chapter's vectorized operations, we can do the same here. Suppose we have the following set of vectors:
-
-$$
-\vec{e}_x = 
-\begin{bmatrix}
-1 & 0 & 0 \\
-\end{bmatrix}
-$$
-
-$$
-\vec{e}_y = 
-\begin{bmatrix}
-0 & 1 & 0 \\
-\end{bmatrix}
-$$
-
-$$
-\vec{e}_z = 
-\begin{bmatrix}
-0 & 0 & 1 \\
-\end{bmatrix}
-$$
-
-And we want to find the cross product of each one with the one underneath (wrap from bottom to top for the last one). We could perform each cross product manually:
-
-```MATLAB
-ex = [1, 0, 0];
-ey = [0, 1, 0];
-ez = [0, 0, 1];
-cross1 = cross(ex, ey);
-cross2 = cross(ey, ez);
-cross3 = cross(ez, ex);
-```
-
-But we can also be much cooler than that:
-
-```MATLAB
-ex = [1, 0, 0];
-ey = [0, 1, 0];
-ez = [0, 0, 1];
-one = [ex; ey; ez];
-two = [ey; ez; ex];
-crosses = 
-```
