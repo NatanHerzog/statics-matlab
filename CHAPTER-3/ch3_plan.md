@@ -58,13 +58,13 @@ When performed by hand, we have to go through the tedious process of calculating
 
 $$
 \vec{M} =
-\left\vert
-\begin{matrix}
+det\left(
+\begin{bmatrix}
 \hat{i} & \hat{j} & \hat{k} \\
 r_x & r_y & r_z \\
 F_x & F_y & F_z
-\end{matrix}
-\right\vert
+\end{bmatrix}
+\right)
 $$
 
 $$\vec{M} = \left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}$$
