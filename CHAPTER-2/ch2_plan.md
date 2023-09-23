@@ -1,4 +1,4 @@
-# Objectives
+# Chapter 2
 
 ## Vectors in MATLAB
 

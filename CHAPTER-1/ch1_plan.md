@@ -1,4 +1,4 @@
-# Objectives
+# Chapter 1
 
 ## Gain access to MATLAB
 

@@ -14,4 +14,5 @@
 
 - Vector projection
 - Vector operations: vector product (cross product)
+- Moments
 - Couples
