@@ -20,13 +20,43 @@ When done by hand, this can be very tedious:
 
 $$\Vert\vec{b}\Vert = \sqrt{(b_x)^2 + (b_y)^2 + (b_z)^2}$$
 
-$$\vec{p}_{a/b} = \left(\begin{bmatrix}a_x & a_y & a_z\end{bmatrix} \cdot \frac{1}{\Vert\vec{b}\Vert}\begin{bmatrix}b_x \\ b_y \\ b_z \end{bmatrix}\right)\left(\frac{1}{\Vert\vec{b}\Vert}\begin{bmatrix}b_x \\ b_y \\ b_z \end{bmatrix}\right)$$
+$$
+\vec{p}_{a/b} =
+\left(
+  \begin{bmatrix}
+  a_x & a_y & a_z
+  \end{bmatrix}
+  \cdot
+  \frac{1}{\Vert\vec{b}\Vert}
+  \begin{bmatrix}
+  b_x \\
+  b_y \\
+  b_z
+  \end{bmatrix}
+\right)
+\left(
+  \frac{1}{\Vert\vec{b}\Vert}
+  \begin{bmatrix}
+  b_x \\
+  b_y \\
+  b_z
+  \end{bmatrix}
+\right)
+$$
 
-$$\vec{p}_{a/b} = \left(\frac{(a_x)(b_x) + (a_y)(b_y) + (a_z)(b_z)}{\Vert\vec{b}\Vert^2}\right) \begin{bmatrix}b_x \\ b_y \\ b_z \end{bmatrix}$$
+$$
+\vec{p}_{a/b} =
+\left(\frac{(a_x)(b_x) + (a_y)(b_y) + (a_z)(b_z)}{\Vert\vec{b}\Vert^2}\right)
+\begin{bmatrix}
+b_x \\
+b_y \\
+b_z
+\end{bmatrix}
+$$
 
-I'm pretty sure we can agree that neither of us wants to do all that work ourselves
+We can agree that we'd rather not do that work by hand, right?
 
-If you take advantage of MATLAB, it simplifies the work greatly:
+Taking advantage of MATLAB simplifies the work greatly:
 
 ```MATLAB
 a = [1, 1, 1]; % define vector a
@@ -37,18 +67,6 @@ proj = e_b.*(dot(a, e_b)); % perform the projection of a onto b
 ```
 
 `output: proj = [1, 0, 0]`
-
-Or, you can put the entire projection formula into a single line, as follows:
-
-```MATLAB
-a = [1, 1, 1]; % define vector a
-b = [1, 0, 0]; % define vector b
-proj = (b./norm(b)) .* (dot(a, b./norm(b)));
-```
-
-`output: proj = [1, 0, 0]`
-
-As you can see, MATLAB gives you the power to do complex math with very little work. It's an extremely powerful tool!
 
 ## Vector Cross Product
 
