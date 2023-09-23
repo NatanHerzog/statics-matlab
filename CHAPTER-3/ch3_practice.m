@@ -10,18 +10,20 @@
 %% --------------- STEP-BY-STEP 2 --------------- %%
 % [] Define two position vectors r1 and r2 (choose their components yourself)
 % [] Define a force vector F (choose its components yourself)
-% [] Calculate the resultant moment, M1, at r1 with the cross product (r1 x F)
-% [] Calculate the resultant moment, M2, at r2 with the cross product (r2 x F)
+% [] Calculate the resultant M1 with a moment arm r1 using the cross product (r1 x F)
+% [] Calculate the resultant M2 with a moment arm r2 using the cross product (r2 x F)
 % [] Calculate the magnitudes of each resultant moment, M1 and M2
 % [] Observe that not only are the vectors M1 and M2 different, but their magnitudes are also
 
 %% --------------- STEP-BY-STEP 3 --------------- %%
-% [] Define a vector r (blue vector between a force couple) (choose its components yourself)
-% [] Define a vector F (red force vector) and its negative (-F) (choose the components yourself)
-% [] Calculate the couple between these two forces (r x F) making sure that you use the force vector that r actually points towards 
-% [] Now apply the following matrix to the vector r, F, and (-F):
-R = [cosd(45), -sind(45); sind(45), cosd(45)];
-% **NOTE** this is a rotation matrix that will just rotate the vectors in 2D space. you DO NOT need to know how this works for this course, I am only including it so that you can see how couples work
-% Apply R to the vectors like so: rNew = (R*r')', FNew = (R*F')' (also do -FNew)
+% **NOTE** for this problem, refer to the second set of diagrams in ch3_plan.md
+% [] Define a vector r (blue vector) (choose only x,y components and set rz = 0)
+% [] Define a vector F (red vector) (choose only x,y components and set Fz = 0)
+% **NOTE** we don't need to declare another opposing vector because it is not part of the equation, but keep in mind that a couple does still have it
+% [] Calculate the couple between these two forces (r x F)
+% [] Now apply the following matrix to the vectors r, F:
+rotationMatrix = [cosd(45), -sind(45) 0; sind(45), cosd(45), 0; 0, 0, 0];
+% **NOTE** this is a rotation matrix that rotates the vectors in the x-y plane. you DO NOT need to know how this works for this course, I am only including it so that you can see the invariance of couples
+% Apply R to the vectors like so: rNew = (rotationMatrix*r')', FNew = (rotationMatrix*F')'
 % [] Now calculate the couple again, just as before
 % [] Observe that this resultant couple is identical to the one you calculated before!!

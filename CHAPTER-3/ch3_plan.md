@@ -16,7 +16,7 @@ And recall that $\hat{e}_b$ is the unit direction vector along $\vec{b}$, which 
 
 $$\hat{e}_b = \frac{\vec{b}}{\Vert\vec{b}\Vert}$$
 
-When done by hand, this can be very tedious:
+When done by hand, vector projection can be very tedious. Here are all the steps involved:
 
 $$\Vert\vec{b}\Vert = \sqrt{(b_x)^2 + (b_y)^2 + (b_z)^2}$$
 
@@ -27,12 +27,14 @@ $$
   a_x & a_y & a_z
   \end{bmatrix}
   \cdot
-  \frac{1}{\Vert\vec{b}\Vert}
-  \begin{bmatrix}
-  b_x \\
-  b_y \\
-  b_z
-  \end{bmatrix}
+  \left(
+    \frac{1}{\Vert\vec{b}\Vert}
+    \begin{bmatrix}
+    b_x \\
+    b_y \\
+    b_z
+    \end{bmatrix}
+  \right)
 \right)
 \left(
   \frac{1}{\Vert\vec{b}\Vert}
@@ -53,8 +55,6 @@ b_y \\
 b_z
 \end{bmatrix}
 $$
-
-We can agree that we'd rather not do that work by hand, right?
 
 Taking advantage of MATLAB simplifies the work greatly:
 
@@ -97,11 +97,11 @@ cross(a, b)
 
 `output: ans = [2, -4, 2]`
 
-This is a **SUPER** important tool for this class. For a body to be in static equilibrium, it must not have any translational acceleration **and** it must not have any rotational acceleration. Therefore, $\Sigma\vec{F}=\vec{0},\,\mathrm{and}\,\Sigma\vec{M}_o=\vec{0}$
+This is a **SUPER** important tool for this class. For a body to be in static equilibrium, it must not have any translational **or** rotational acceleration. Therefore, $\Sigma\vec{F}=\vec{0},\,\mathrm{and}\,\Sigma\vec{M}_o=\vec{0}$
 
-*Foreshadowing: One important example of this, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way. This would be bad*
+*Foreshadowing: One important example of this, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way. This would be bad.*
 
-This is the reason that we are building these skills now.
+Such is the reason that we are building these skills now.
 
 ## Moments vs. Couples
 
@@ -128,3 +128,7 @@ Here we have the same force applied at two different locations. Without even doi
 </p>
 
 Here we have the same couple applied at two different locations. This time, it is visually clear that these two couples are just rotated versions of each other. And because the blue $\vec{r}$ and the red $\vec{F}$ are still oriented the same way relative to each other, the resultant couple, $\vec{C}$, is identical!
+
+## Concluding Thoughts
+
+As the semester progresses, I encourage you to use MATLAB as often as you can. It will make your life easier and I am hoping that you will become more comfortable with using it to solve random problems
