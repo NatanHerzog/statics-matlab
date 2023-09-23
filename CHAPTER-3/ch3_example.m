@@ -20,7 +20,3 @@ proj = (b./norm(b)) .* (dot(a, b./norm(b)));
 a = [3, 2, 1];
 b = [5, 4, 3];
 cross(a, b)
-
-% ----- Calculating Moments ----- %
-
-% ----- Couples ----- %

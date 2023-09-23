@@ -105,7 +105,7 @@ This is the reason that we are building these skills now.
 
 ## Moments vs. Couples
 
-In class, we have talked about both moments and couples and some of their differences. I want to briefly motivate why we treat them as separate things, given that their formulas are very similar.
+In class, we have talked about both moments and couples and some of their differences. I want to briefly motivate why we treat them as separate things, given that their formulas are very similar. You will get to prove these differences to yourself in `ch3_practice.m`.
 
 A moment, calculated with $\vec{r} \times \vec{F}$, represents a tendency to rotate *about the origin of the vector $\vec{r}$*. Because $\vec{r}$ is defined from a specific point, the moment, $\vec{M}$, is tied to that location. If you applied $\vec{F}$ at a different spot on the body, its behavior would change.
 
