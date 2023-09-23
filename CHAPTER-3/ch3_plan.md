@@ -56,7 +56,7 @@ Like the dot product, the cross product is extremely common, especially in this 
 
 When performed by hand, we have to go through the tedious process of calculating the $3 \times 3$ determinant:
 
-$$\vec{M} = \left|\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ r_x & r_y & r_z \\ F_x & F_y & F_z \\ \end{vmatrix}\right|$$
+$$\vec{M} = \left|\begin{matrix} \hat{i} & \hat{j} & \hat{k} \\ r_x & r_y & r_z \\ F_x & F_y & F_z \\ \end{matrix}\right|$$
 
 $$\vec{M} = \left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}$$
 
