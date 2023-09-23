@@ -1,0 +1,17 @@
+clear all
+close all
+clc
+
+a = [1, 1, 1]; % define vector a
+b = [1, 0, 0]; % define vector b
+normB = norm(b); % calculate the magnitude of b
+e_b = b./normB; % get the unit direction vector for b
+proj = e_b.*(dot(a, e_b)); % perform the projection of a onto b
+
+a = [1, 1, 1]; % define vector a
+b = [1, 0, 0]; % define vector b
+proj = (b./norm(b)) .* (dot(a, b./norm(b)));
+
+a = [3, 2, 1];
+b = [5, 4, 3];
+cross(a, b)
