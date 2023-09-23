@@ -59,11 +59,11 @@ When performed by hand, we have to go through the tedious process of calculating
 $$
 \vec{M} =
 % det\left(
-\begin{bmatrix}
+\begin{vmatrix}
 \hat{i} & \hat{j} & \hat{k} \\
 r_x & r_y & r_z \\
 F_x & F_y & F_z
-\end{bmatrix}
+\end{vmatrix}
 % \right)
 $$
 
