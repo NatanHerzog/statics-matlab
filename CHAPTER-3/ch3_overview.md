@@ -13,6 +13,6 @@
 ## MATLAB Parallel Objectives
 
 - Vector projection
-- Vector operations: vector product (cross product)
+- Vector operations: cross product
 - Moments
 - Couples
