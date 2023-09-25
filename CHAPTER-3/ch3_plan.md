@@ -76,16 +76,16 @@ When performed by hand, we have to go through the tedious process of calculating
 
 $$
 \vec{M} =
-\Bigg|
+\Bigg\vert
 \begin{matrix}
 \hat{\imath} & \hat{\jmath} & \hat{k} \\
 r_x & r_y & r_z \\
 F_x & F_y & F_z
 \end{matrix}
-\Bigg|
+\Bigg\vert
 $$
 
-$$\vec{M} = \left(r_yF_z - r_zF_y\right)\hat{i} - \left(r_xF_z - r_zF_x\right)\hat{j} + \left(r_xF_y - r_yF_x\right)\hat{k}$$
+$$\vec{M} = \left(r_yF_z - r_zF_y\right)\hat{\imath} - \left(r_xF_z - r_zF_x\right)\hat{\jmath} + \left(r_xF_y - r_yF_x\right)\hat{k}$$
 
 That's quite a process! In MATLAB, just like with `dot()`, there is a `cross()` function to make our lives easy and awesome.
 
@@ -97,7 +97,7 @@ cross(a, b)
 
 `output: ans = [2, -4, 2]`
 
-This is a **SUPER** important tool for this class. For a body to be in static equilibrium, it must not have any translational **or** rotational acceleration. Therefore, $\Sigma\vec{F}=\vec{0},\,\mathrm{and}\,\Sigma\vec{M}_o=\vec{0}$
+This is a **SUPER** important tool for this class. For a body to be in static equilibrium, it must not have any translational **or** rotational acceleration. Therefore, $\Sigma\vec{F}=\vec{0},\,\mathrm{and}\,\Sigma\vec{M}=\vec{0}$
 
 *Foreshadowing: One important example of this, which we will explore throughout the term, is the modeling of bridges. It goes without saying that a bridge should not suddenly start translating or rotating in any way. This would be bad.*
 
