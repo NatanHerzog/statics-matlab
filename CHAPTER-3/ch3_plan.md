@@ -76,11 +76,11 @@ When performed by hand, we have to go through the tedious process of calculating
 
 $$
 \vec{M} =
-\begin{matrix}
-\vert & \hat{\imath} & \hat{\jmath} & \hat{k} & \vert \\
-\vert & r_x & r_y & r_z & \vert \\
-\vert & F_x & F_y & F_z & \vert
-\end{matrix}
+\begin{vmatrix}
+\hat{\imath} & \hat{\jmath} & \hat{k} \\
+r_x & r_y & r_z\\
+F_x & F_y & F_z
+\end{vmatrix}
 $$
 
 $$\vec{M} = \left(r_yF_z - r_zF_y\right)\hat{\imath} - \left(r_xF_z - r_zF_x\right)\hat{\jmath} + \left(r_xF_y - r_yF_x\right)\hat{k}$$
