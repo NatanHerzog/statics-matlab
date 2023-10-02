@@ -9,7 +9,8 @@ In class, we have been discussing the calculation of centroids by integration. R
 For example, let's explore the following integral:
 
 $$
-\int x^2 dx = \frac{x^3}{3}
+\displaystyle
+\int x^2 \,dx = \frac{x^3}{3}
 $$
 
 ```MATLAB
@@ -24,7 +25,8 @@ integratedExpr = int(expr,x)
 Let's add some limits to this integration now
 
 $$
-\int_{0}^{5} x^2 dx =
+\displaystyle
+\int_{0}^{5} x^2 \,dx =
 \frac{1}{3}
 \left(
     \left.x^3\right\rvert_{x=5} - \left.x^3\right\rvert_{x=0}
@@ -49,34 +51,88 @@ These are fairly simple examples. This is a really powerful tool. We can use it 
 
 ## Center of Area
 
-As a reminder, here is the governing form for the y-location of a body's center of area:
+As a reminder, here are the governing equations for the $(\bar{x},\bar{y})$ coordinates of a body's center of area:
 
 $$
-\bar{y} =
-\frac{\int ydA}{\int dA}
+\bar{x} = \frac{\displaystyle\int x \,dA}{\displaystyle\int dA},\,
+\bar{y} = \frac{\displaystyle\int y \,dA}{\displaystyle\int dA}
 $$
 
-This equation may look intimidating, so I want to quickly break down each part to better understand what is physically happening here. Effectively, this equation slices the shape into a bunch of tiny pieces and then averages the centroids of all the those pieces.
+Let's find the center of area for the curve $y = x^2$ on the interval $\left[1,6\right]$.
 
-The numerator $\int ydA$ is performing a weighted sum of y-locations for every piece's centroid $\Rightarrow y$ reprents the y-location for the centroid of every little $dA$ element. If the idea of a weighted sum is uncomfortable, consider the following scenario.
-
-Six of your friends each pick a number ($1$-$10$) out of a hat (there can be repeats). I ask, what is the average of the numbers drawn. You *could* simply add the numbers drawn by each person and then divide by $6$. But you can also get the same result with a weighted sum. I'll show you!
-
-The 6 numbers drawn are: $2,\,5,\,6,\,5,\,8,\,1$. Then the average is as follows:
+To find $\bar{x}$ as we did in class, let's define our $dA$ as a vertical rectangle with width $dx$ and height $y=x^2$, to get an integral in terms of $x$.
 
 $$
-\bar{n} = \frac{2 + 5 + 6 + 5 + 8 + 1}{6} = \frac{27}{6} = 4.5
+dA = (width)(height) = (dx)(x^2)
 $$
 
-A weighted sum in this case follows this general form:
-
 $$
-\bar{n} = \frac{\Sigma \left(number\right)\left(\#\,of\,appearances\right)}{\#\,of\,draws} = \frac{(2)(1) + (5)(2) + (6)(1) + (8)(1) + (1)(1)}{6} = \frac{27}{6} = 4.5
+\bar{x} = \frac{\displaystyle\int_1^6 x \,dA}{\displaystyle\int_1^6 dA} = \frac{\displaystyle\int_1^6 (x)(x^2)\,dx}{\displaystyle\int_1^6 x^2 \,dx} \Rightarrow \left[\bar{x} = \frac{\displaystyle\int_1^6 x^3 \,dx}{\displaystyle\int_1^6 x^2 \,dx}\right]
 $$
 
-I bring this up because we're doing the exact same thing! $\Rightarrow y$ is analogous to $\left(number\right)$ and $dA$ is analogous to $\left(\#\,of\,appearances\right)$. And notice that the sum of all the $\left(\#\,of\,appearances\right)$ gives $\left(\#\,of\,draws\right)$. Then $\int dA$ is analogous to $\left(\#\,of\,draws\right)$.
+This is very simple in MATLAB:
 
-So, let's bring it back to our centroid calculation with an example. Calculate the centroid
+```MATLAB
+syms x                                              % define symbolic x
+numerator = int(x^3, x, 1, 6);                      % integrate numerator
+denominator = int(x^2, x, 1, 6);                    % integrate denominator
+x_bar = double(simplify(numerator / denominator))   % solve x_bar
+```
+
+`output x_bar = 4.5174`
+
+To find $\bar{y}$ as we did in class, let's define our $dA$ as a horizontal rectangle with width $\left(6 - \sqrt{y}\right)$ and height $dy$, to get the integral in terms of $y$.
+
+$$
+dA = (width)(height) = \left(6 - \sqrt{y}\right)(dy)
+$$
+
+$$
+\bar{y} = \frac{\displaystyle\int_{y=1^2}^{y=6^2} y \,dA}{\displaystyle\int_{y=1^2}^{y=6^2} dA} = \frac{\displaystyle\int_{1}^{36} (y)(6 - \sqrt{y}) \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy}
+\Rightarrow \left[\bar{y} = \frac{\displaystyle\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy}\right]$$
+
+Again, this is very simple in MATLAB:
+
+```MATLAB
+syms y                                              % define symbolic y
+numerator = int(6*y-y^(3/2), y, 1, 36);             % integrate numerator
+denominator = int(6-sqrt(y), y, 1, 36);             % integrate denominator
+y_bar = double(simplify(numerator / denominator))   % solve y_bar
+```
+
+`output: y_bar = 11.6250`
+
+Now, to justify that these answers are correct:
+
+$$
+\bar{x} =
+\frac{\displaystyle\int_1^6 x^3 \,dx}{\displaystyle\int_1^6 x^2 \,dx} =
+\frac{\frac{1}{4}\left.x^4\right|_1^6}{\frac{1}{3}\left.x^3\right|_1^6} =
+\frac{\frac{1}{4}\left[6^4 - 1\right]}{\frac{1}{3}\left[6^3 - 1\right]} =
+\frac{\frac{1295}{4}}{\frac{215}{3}} =
+\frac{(1295)(3)}{(215)(4)} =
+4.5174
+$$
+
+$$
+\bar{y} = \frac{\displaystyle\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy} =
+\frac{\left.\frac{6}{2}y^2 - \frac{2}{5}y^{\frac{5}{2}}\right|_1^{36}}{\left.6y - \frac{2}{3}y^{\frac{3}{2}}\right|_{1}^{36}} =
+\frac{\frac{6}{2}\left[36^2-1\right] - \frac{2}{5}\left[36^{\frac{5}{2}}-1\right]}{6\left[36-1\right] - \frac{2}{3}\left[36^{\frac{3}{2}}-1\right]} =
+\frac{\frac{6}{2}(1295) - \frac{2}{5}(7775)}{(6)(35) - \frac{2}{3}(215)} =
+11.6250
+$$
+
+$$
+\left(\bar{x},\,\bar{y}\right) = \left(4.5174,\,11.6250\right)
+$$
+
+Hopefully it is clear to see that MATLAB makes these calculations significantly simpler!
+
+## Other Centroid Calculations
+
+Any other centroid calculation is exactly the same as what we've just done. The only difference is how you set up the problem, which is outside the scope of this MATLAB content.
+
+I assure you, if you are comfortable with writing the integrals in MATLAB for this exercise, you can do centroids of lines, volume, mass, or anything else!
 
 ## Extra Resources
 
