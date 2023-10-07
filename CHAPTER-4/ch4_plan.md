@@ -54,8 +54,9 @@ These are fairly simple examples. This is a really powerful tool. We can use it 
 As a reminder, here are the governing equations for the $(\bar{x},\bar{y})$ coordinates of a body's center of area:
 
 $$
-\bar{x} = \frac{\displaystyle\int x \,dA}{\displaystyle\int dA},\,
-\bar{y} = \frac{\displaystyle\int y \,dA}{\displaystyle\int dA}
+\displaystyle
+\bar{x} = \frac{\int x \,dA}{\int dA},\,
+\bar{y} = \frac{\int y \,dA}{\int dA}
 $$
 
 Let's find the center of area for the curve $y = x^2$ on the interval $\left[1,6\right]$.
@@ -63,11 +64,13 @@ Let's find the center of area for the curve $y = x^2$ on the interval $\left[1,6
 To find $\bar{x}$ as we did in class, let's define our $dA$ as a vertical rectangle with width $dx$ and height $y=x^2$, to get an integral in terms of $x$.
 
 $$
+\displaystyle
 dA = (width)(height) = (dx)(x^2)
 $$
 
 $$
-\bar{x} = \frac{\displaystyle\int_1^6 x \,dA}{\displaystyle\int_1^6 dA} = \frac{\displaystyle\int_1^6 (x)(x^2)\,dx}{\displaystyle\int_1^6 x^2 \,dx} \Rightarrow \left[\bar{x} = \frac{\displaystyle\int_1^6 x^3 \,dx}{\displaystyle\int_1^6 x^2 \,dx}\right]
+\displaystyle
+\bar{x} = \frac{\int_1^6 x \,dA}{\int_1^6 dA} = \frac{\int_1^6 (x)(x^2)\,dx}{\int_1^6 x^2 \,dx} \Rightarrow \left[\bar{x} = \frac{\int_1^6 x^3 \,dx}{\int_1^6 x^2 \,dx}\right]
 $$
 
 This is very simple in MATLAB:
@@ -84,12 +87,14 @@ x_bar = double(simplify(numerator / denominator))   % solve x_bar
 To find $\bar{y}$ as we did in class, let's define our $dA$ as a horizontal rectangle with width $\left(6 - \sqrt{y}\right)$ and height $dy$, to get the integral in terms of $y$.
 
 $$
+\displaystyle
 dA = (width)(height) = \left(6 - \sqrt{y}\right)(dy)
 $$
 
 $$
-\bar{y} = \frac{\displaystyle\int_{y=1^2}^{y=6^2} y \,dA}{\displaystyle\int_{y=1^2}^{y=6^2} dA} = \frac{\displaystyle\int_{1}^{36} (y)(6 - \sqrt{y}) \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy}
-\Rightarrow \left[\bar{y} = \frac{\displaystyle\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy}\right]$$
+\displaystyle
+\bar{y} = \frac{\int_{y=1^2}^{y=6^2} y \,dA}{\int_{y=1^2}^{y=6^2} dA} = \frac{\int_{1}^{36} (y)(6 - \sqrt{y}) \,dy}{\int_{1}^{36} 6 - \sqrt{y} \,dy}
+\Rightarrow \left[\bar{y} = \frac{\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\int_{1}^{36} 6 - \sqrt{y} \,dy}\right]$$
 
 Again, this is very simple in MATLAB:
 
@@ -105,8 +110,9 @@ y_bar = double(simplify(numerator / denominator))   % solve y_bar
 Now, to justify that these answers are correct:
 
 $$
+\displaystyle
 \bar{x} =
-\frac{\displaystyle\int_1^6 x^3 \,dx}{\displaystyle\int_1^6 x^2 \,dx} =
+\frac{\int_1^6 x^3 \,dx}{\int_1^6 x^2 \,dx} =
 \frac{\frac{1}{4}\left.x^4\right|_1^6}{\frac{1}{3}\left.x^3\right|_1^6} =
 \frac{\frac{1}{4}\left[6^4 - 1\right]}{\frac{1}{3}\left[6^3 - 1\right]} =
 \frac{\frac{1295}{4}}{\frac{215}{3}} =
@@ -115,7 +121,8 @@ $$
 $$
 
 $$
-\bar{y} = \frac{\displaystyle\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle\int_{1}^{36} 6 - \sqrt{y} \,dy} =
+\displaystyle
+\bar{y} = \frac{\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\int_{1}^{36} 6 - \sqrt{y} \,dy} =
 \frac{\left.\frac{6}{2}y^2 - \frac{2}{5}y^{\frac{5}{2}}\right|_1^{36}}{\left.6y - \frac{2}{3}y^{\frac{3}{2}}\right|_{1}^{36}} =
 \frac{\frac{6}{2}\left[36^2-1\right] - \frac{2}{5}\left[36^{\frac{5}{2}}-1\right]}{6\left[36-1\right] - \frac{2}{3}\left[36^{\frac{3}{2}}-1\right]} =
 \frac{\frac{6}{2}(1295) - \frac{2}{5}(7775)}{(6)(35) - \frac{2}{3}(215)} =
@@ -123,6 +130,7 @@ $$
 $$
 
 $$
+\displaystyle
 \left(\bar{x},\,\bar{y}\right) = \left(4.5174,\,11.6250\right)
 $$
 
