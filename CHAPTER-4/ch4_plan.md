@@ -2,9 +2,9 @@
 
 ## Introduction to Symbolics
 
-Thus far, everything we've done has been "traditional" programming. We define variables and assign them values, then write some equations. But MATLAB also has a tool called the `Symbolic Toolbox`. This allows you to define equations symbolically.
+Thus far, everything we've done has been "traditional" programming. We define variables and assign them values, then write some equations. But MATLAB also has a tool called the `Symbolic Toolbox`. This is a really powerful tool with many capabilities, but we will focus on the aspects that are directly relevant for Statics.
 
-In class, we have been discussing the calculation of centroids by integration. Rather than performing these by hand, you can use the `int()` function to do them symbolically.
+In class, we have discussed the calculation of centroids by integration. Rather than performing these by hand, you can use the `int()` function to do them symbolically.
 
 For example, let's explore the following integral:
 
@@ -12,6 +12,8 @@ $$
 \displaystyle
 \int x^2 \,dx = \frac{x^3}{3}
 $$
+
+We can replicate this in MATLAB as follows:
 
 ```MATLAB
 syms x
@@ -22,14 +24,14 @@ integratedExpr = int(expr,x)
 
 `output: integratedExpr = x^3/3`
 
-Let's add some limits to this integration now
+We can also include limits of integration.
 
 $$
 \displaystyle
 \int_{0}^{5} x^2 \,dx =
 \frac{1}{3}
 \left(
-    \left.x^3\right\rvert_{x=5} - \left.x^3\right\rvert_{x=0}
+    \left.x^3\right\vert_{x=5} - \left.x^3\right\vert_{x=0}
 \right) =
 \frac{1}{3}
 \left(
@@ -47,7 +49,7 @@ integratedExpr = int(expr,x,0,5)
 
 `output: integratedExpr = 125/3`
 
-These are fairly simple examples. This is a really powerful tool. We can use it to centroid calculations, like we've been covering in class!
+These are fairly simple examples, but it can be used for everything we need for class. Let's see how to use it to centroid calculations, like we've been covering in class!
 
 ## Center of Area
 
