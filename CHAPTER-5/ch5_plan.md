@@ -57,7 +57,7 @@ y
 \end{Bmatrix}
 $$
 
-Perhaps this was intimidating, so let me break down what I've done. The matrix here is called a *coefficient matrix* because it contains the coefficients for the variables $x,\,y$ in the original equations.
+Perhaps this was intimidating, so let me break down what I've done. The matrix here is called a *coefficient matrix* because it contains the coefficients for the variables $x,y$ in the original equations.
 
 If you look, the first row of the matrix matches the first equation:
 
@@ -96,27 +96,27 @@ First, list the sum of forces in each direction:
 
 $$
 \displaystyle
-\sum F_{x} = 0 \Rightarrow R_{A,\,x} + T_{\overline{CD},\,x} = 0
+\sum F_{x} = 0 \Rightarrow R_{A,x} + T_{\overline{CD},x} = 0
 $$
 
 $$
 \displaystyle
-\sum F_{y} = 0 \Rightarrow R_{A,\,y} + R_{B,\,y} - T_{\overline{CD},\,y} = 0
+\sum F_{y} = 0 \Rightarrow R_{A,y} + R_{B,y} - T_{\overline{CD},y} = 0
 $$
 
 $$
 \displaystyle
-\sum F_{z} = 0 \Rightarrow R_{A,\,z} + R_{B,\,z} + T_{\overline{CD},\,z} - W = 0
+\sum F_{z} = 0 \Rightarrow R_{A,z} + R_{B,z} + T_{\overline{CD},z} - W = 0
 $$
 
-So far, there are $6$ variables: $R_{A,\,x},\,R_{A,\,y},\,R_{A,\,z},\,R_{B,\,y},\,R_{B,\,z},\,T_{\overline{CD}}$.
+So far, there are $6$ variables: $R_{A,x},R_{A,y},R_{A,z},R_{B,y},R_{B,z},T_{\overline{CD}}$.
 
 Note that $T_{\overline{CD}}$ is decomposed into its components by trigonometry as follows:
 
-![trig breakdown of $T_{\overline{CD}}$](../images/ch5-hw-example-annotated.png)
+![trig breakdown](../images/ch5-hw-example-annotated.png)
 
 $$
-L_{\overline{CD}} = \sqrt{(59-21)^2 + 50^2 + 42^2} = 75.5513\,\left[\mathrm{in}\right]
+L_{\overline{CD}} = \sqrt{(59-21)^2 + 50^2 + 42^2} = 75.5513\left[\mathrm{in}\right]
 $$
 
 $$
@@ -130,47 +130,47 @@ $$
 Which then leads to the following:
 
 $$
-T_{\overline{CD},\,x} = T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right)
+T_{\overline{CD},x} = T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right)
 $$
 
 $$
-T_{\overline{CD},\,y} = T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right)
+T_{\overline{CD},y} = T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right)
 $$
 
 $$
-T_{\overline{CD},\,z} = T_{\overline{CD}}\sin\left(\theta_{1}\right)
+T_{\overline{CD},z} = T_{\overline{CD}}\sin\left(\theta_{1}\right)
 $$
 
 So far, we only have $3$ equations and $6$ variables. So let's write out equations for the moments in each axial direction at point $\mathrm{C}$ to avoid introducing the reactionary moments at $A$ or $B$.
 
 $$
 \displaystyle
-\circlearrowleft \sum M_{C,\,x} = 0 \Rightarrow
--(R_{A,\,z})(50) - (R_{B,\,z})(50) + (W)(25) = 0
+\circlearrowleft \sum M_{C,x} = 0 \Rightarrow
+-(R_{A,z})(50) - (R_{B,z})(50) + (W)(25) = 0
 $$
 
 $$
 \displaystyle
-\circlearrowleft \sum M_{C,\,y} = 0 \Rightarrow
--(R_{A,\,z})(74-21) + (R_{B,\,z})(21-10) + (W)\left(\frac{84}{2} - 21\right) = 0
+\circlearrowleft \sum M_{C,y} = 0 \Rightarrow
+-(R_{A,z})(74-21) + (R_{B,z})(21-10) + (W)\left(\frac{84}{2} - 21\right) = 0
 $$
 
 $$
 \displaystyle
-\circlearrowleft \sum M_{C,\,z} = 0 \Rightarrow
-(R_{A,\,x})(50) + ((R_{A,\,y}))(74-21) - (R_{B,\,y})(21-10) = 0
+\circlearrowleft \sum M_{C,z} = 0 \Rightarrow
+(R_{A,x})(50) + ((R_{A,y}))(74-21) - (R_{B,y})(21-10) = 0
 $$
 
 This leaves us with six equations:
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} + T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) = 0 \\
-R_{A,\,y} + R_{B,\,y} - T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) = 0 \\
-R_{A,\,z} + R_{B,\,z} + T_{\overline{CD}}\sin\left(\theta_{1}\right) = W \\
--(R_{A,\,z})(50) - (R_{B,\,z})(50) = -(W)(25) \\
--(R_{A,\,z})(74-21) + (R_{B,\,z})(21-10) = -(W)\left(\frac{84}{2} - 21\right) \\
-(R_{A,\,x})(50) + ((R_{A,\,y}))(74-21) - (R_{B,\,y})(21-10) = 0
+R_{A,x} + T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) = 0 \\
+R_{A,y} + R_{B,y} - T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) = 0 \\
+R_{A,z} + R_{B,z} + T_{\overline{CD}}\sin\left(\theta_{1}\right) = W \\
+-(R_{A,z})(50) - (R_{B,z})(50) = -(W)(25) \\
+-(R_{A,z})(74-21) + (R_{B,z})(21-10) = -(W)\left(\frac{84}{2} - 21\right) \\
+(R_{A,x})(50) + ((R_{A,y}))(74-21) - (R_{B,y})(21-10) = 0
 \end{Bmatrix}
 $$
 
@@ -186,11 +186,11 @@ $$
 50 & 53 & 0 & -11 & 0 & 0
 \end{bmatrix}
 \begin{Bmatrix}
-R_{A,\,x} \\
-R_{A,\,y} \\
-R_{A,\,z} \\
-R_{B,\,y} \\
-R_{B,\,z} \\
+R_{A,x} \\
+R_{A,y} \\
+R_{A,z} \\
+R_{B,y} \\
+R_{B,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
@@ -228,24 +228,24 @@ Output:
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} \\
-R_{A,\,y} \\
-R_{A,\,z} \\
-R_{B,\,y} \\
-R_{B,\,z} \\
+R_{A,x} \\
+R_{A,y} \\
+R_{A,z} \\
+R_{B,y} \\
+R_{B,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
--108.5714\,\left[\mathrm{lb_{f}}\right] \\
-109.3750\,\left[\mathrm{lb_{f}}\right] \\
-99.3750\,\left[\mathrm{lb_{f}}\right] \\
-33.4821\,\left[\mathrm{lb_{f}}\right] \\
-20.6250\,\left[\mathrm{lb_{f}}\right] \\
-215.8609\,\left[\mathrm{lb_{f}}\right]
+-108.5714\left[\mathrm{lb_{f}}\right] \\
+109.3750\left[\mathrm{lb_{f}}\right] \\
+99.3750\left[\mathrm{lb_{f}}\right] \\
+33.4821\left[\mathrm{lb_{f}}\right] \\
+20.6250\left[\mathrm{lb_{f}}\right] \\
+215.8609\left[\mathrm{lb_{f}}\right]
 \end{Bmatrix}
 $$
 
-That was quite a bit of work and it was mostly unnecessary because the equation for $\displaystyle \circlearrowleft \sum M_{A,\,x} = 0$ would be enough to solve the problem.
+That was quite a bit of work and it was mostly unnecessary because the equation for $\displaystyle \circlearrowleft \sum M_{A,x} = 0$ would be enough to solve the problem.
 
 But this is a robust example that demonstrates the power of matrix solution for a system of equations.
 
@@ -327,20 +327,20 @@ The output is exactly the same as before!
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} \\
-R_{A,\,y} \\
-R_{A,\,z} \\
-R_{B,\,y} \\
-R_{B,\,z} \\
+R_{A,x} \\
+R_{A,y} \\
+R_{A,z} \\
+R_{B,y} \\
+R_{B,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
--108.5714\,\left[\mathrm{lb_{f}}\right] \\
-109.3750\,\left[\mathrm{lb_{f}}\right] \\
-99.3750\,\left[\mathrm{lb_{f}}\right] \\
-33.4821\,\left[\mathrm{lb_{f}}\right] \\
-20.6250\,\left[\mathrm{lb_{f}}\right] \\
-215.8609\,\left[\mathrm{lb_{f}}\right]
+-108.5714\left[\mathrm{lb_{f}}\right] \\
+109.3750\left[\mathrm{lb_{f}}\right] \\
+99.3750\left[\mathrm{lb_{f}}\right] \\
+33.4821\left[\mathrm{lb_{f}}\right] \\
+20.6250\left[\mathrm{lb_{f}}\right] \\
+215.8609\left[\mathrm{lb_{f}}\right]
 \end{Bmatrix}
 $$
 
@@ -352,7 +352,7 @@ To introduce loops, I want to work through the conceptual problem posed in the t
 
 We can determine the maximum angle at which the block will remain stationary by performing this "lifting" action using a loop. We will incrementally increase the angle $\phi$ until the block begins to slide.
 
-For this setup, there are three forces present: the block's weight, $W$; the normal force, $F_{N}$; and the friction force, $F_{f}$. For this problem let's define $\mu_{s}=0.61,\,\mu_{k}=0.47$ corresponding to the Aluminum and Steel (dry) combination from the textbook.
+For this setup, there are three forces present: the block's weight, $W$; the normal force, $F_{N}$; and the friction force, $F_{f}$. For this problem let's define $\mu_{s}=0.61,\mu_{k}=0.47$ corresponding to the Aluminum and Steel (dry) combination from the textbook.
 
 Now, since we're going to change the value of $\phi$, we have to write each of the forces in a generalized form as functions of $\phi$.
 
@@ -375,7 +375,7 @@ But remember that the magnitude of static friction force is only ever as high as
 For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\overrightarrow{W} + \overrightarrow{F}_{N}$, as follows:
 
 $$
-\overrightarrow{F}_{f} = -F_{N,\,x}\hat{\imath} + \left(-W_{y} - F_{N,\,y}\right)\hat{\jmath}
+\overrightarrow{F}_{f} = -F_{N,x}\hat{\imath} + \left(-W_{y} - F_{N,y}\right)\hat{\jmath}
 $$
 
 Armed with these equations, we can write a loop to analyze the system in MATLAB:
