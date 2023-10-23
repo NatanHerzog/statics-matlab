@@ -436,3 +436,15 @@ hold off
 ![Plot of force balance](../images/ch5-friction-incline-plane.png)
 
 This work-through is certainly a bit advanced, but I am confident that you can work through what is happening step-by-step. If you are confused, read through `ch5_example.m` to get a more basic introduction to looping and then come back for another go at this again.
+
+## Practice Question
+
+Use this as a reference for solving the practice question.
+
+Point $\mathrm{A}$ is a pin support. Point $\mathrm{B}$ has a cable connected to the wall at an angle of $\theta=45^{\circ}$. There is an applied load, $P=10[\mathrm{N}]$, at point $\mathrm{C}$ acting at an angle $\phi=30^{\circ}$.
+
+The length $\mathrm{AB}$ is $L=10[\mathrm{m}]$ and point $\mathrm{C}$ is a distance $l=7.5[\mathrm{m}]$ away from point $\mathrm{B}$.
+
+Assume the rod $\mathrm{AB}$ is massless and you do not have to account for gravity.
+
+![practice question](../images/ch5-practice.jpg)
