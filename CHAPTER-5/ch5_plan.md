@@ -367,11 +367,7 @@ $$
 $$
 
 $$
-\overrightarrow{F}_{f} = \left( \mu_s \Vert\overrightarrow{W}\Vert\cos(\phi)\right)\left(\sin(\phi)\hat{\imath} + \cos(\phi)\hat{\jmath}\right)
-$$
-
-$$
-\overrightarrow{F}_{f} = \left( \mu_{s} \Vert \overrightarrow{F}_{N} \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
+\overrightarrow{F}_{f} = \left( \mu_s \Vert \overrightarrow{F}_{N} \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
 $$
 
 But remember that the magnitude of static friction force is only ever as high as it needs to be to oppose the other forces. This means that as long as the forces acting along the inclined plane are not equal to the maximum possible static friction force, the value of $F_{f}$ will not be equal to the equation shown above.
@@ -379,7 +375,7 @@ But remember that the magnitude of static friction force is only ever as high as
 For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\overrightarrow{W} + \overrightarrow{F}_{N}$, as follows:
 
 $$
-\overrightarrow{F}_{f} = -F_{N,x}\hat{\imath} + \left(-W_{y} - F_{N,y}\right)\hat{\jmath}
+\overrightarrow{F}_{f} = -F_{N,x}\hat{\imath} + \left(-W_y - F_{N,y}\right)\hat{\jmath}
 $$
 
 Armed with these equations, we can write a loop to analyze the system in MATLAB:
