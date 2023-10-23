@@ -367,7 +367,7 @@ $$
 $$
 
 $$
-\overrightarrow{F}_{f} = \left( \mu_s \Vert \overrightarrow{F}_{N} \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
+\overrightarrow{F}_f = \left( \mu_s \Vert \overrightarrow{F}_N \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
 $$
 
 But remember that the magnitude of static friction force is only ever as high as it needs to be to oppose the other forces. This means that as long as the forces acting along the inclined plane are not equal to the maximum possible static friction force, the value of $F_{f}$ will not be equal to the equation shown above.
