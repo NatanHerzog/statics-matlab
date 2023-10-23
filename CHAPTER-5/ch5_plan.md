@@ -367,7 +367,7 @@ $$
 $$
 
 $$
-\overrightarrow{F}_{f} = \left( \mu_{s} \Vert\overrightarrow{W}\Vert\cos(\phi)\right)\left(\sin(\phi)\hat{\imath} + \cos(\phi)\hat{\jmath}\right)
+\overrightarrow{F}_{f} = \left( \mu_s \Vert\overrightarrow{W}\Vert\cos(\phi)\right)\left(\sin(\phi)\hat{\imath} + \cos(\phi)\hat{\jmath}\right)
 $$
 
 $$
