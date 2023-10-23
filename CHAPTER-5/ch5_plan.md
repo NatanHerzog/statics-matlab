@@ -4,7 +4,7 @@ I expect that by this point in your academic career, you have already seen syste
 
 $$
 \begin{Bmatrix}
-x + y = 10 \\[1em]
+x + y = 10 \\
 \displaystyle
 \frac{1}{2}x - y = -3
 \end{Bmatrix}
@@ -37,22 +37,22 @@ $$
 
 Hopefully this was not new for you. This chapter will introduce two new methods for solving systems of equations that are significantly simpler for you.
 
-## Systems of Eqns - Matrix Form
+## Systems of Eqations - Matrix Form
 
 We can rewrite the system of equations above using linear algebra as follows:
 
 $$
 \begin{bmatrix}
-1 & 1 \\[1em]
+1 & 1 \\
 \displaystyle
 \frac{1}{2} & -1
 \end{bmatrix}
 \begin{Bmatrix}
-x \\[1em]
+x \\
 y
 \end{Bmatrix} =
 \begin{Bmatrix}
-10 \\[1em]
+10 \\
 -3
 \end{Bmatrix}
 $$
@@ -66,7 +66,7 @@ $$
 1 & 1
 \end{bmatrix}
 \begin{Bmatrix}
-x \\[1em]
+x \\
 y
 \end{Bmatrix} =
 x + y
@@ -80,7 +80,7 @@ $$
 \frac{1}{2} & -1
 \end{bmatrix}
 \begin{Bmatrix}
-x \\[1em]
+x \\
 y
 \end{Bmatrix} =
 \frac{1}{2}x - y
@@ -90,7 +90,7 @@ And the vector on the right-hand side of the matrix equation just contains the r
 
 As an example, I'm going to take $\mathrm{P}.5.70$ from Homework $6$ and solve it the hard way by brute force.
 
-![Example from homework](../images/ch5-hw-example.jpg){width=50%}
+![Example from homework](../images/ch5-hw-example.jpg)
 
 First, list the sum of forces in each direction:
 
@@ -113,7 +113,7 @@ So far, there are $6$ variables: $R_{A,\,x},\,R_{A,\,y},\,R_{A,\,z},\,R_{B,\,y},
 
 Note that $T_{\overline{CD}}$ is decomposed into its components by trigonometry as follows:
 
-![trig breakdown of $T_{\overline{CD}}$](../images/ch5-hw-example-annotated.png){width=50%}
+![trig breakdown of $T_{\overline{CD}}$](../images/ch5-hw-example-annotated.png)
 
 $$
 L_{\overline{CD}} = \sqrt{(59-21)^2 + 50^2 + 42^2} = 75.5513\,\left[\mathrm{in}\right]
@@ -165,11 +165,11 @@ This leaves us with six equations:
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} + T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) = 0 \\[1em]
-R_{A,\,y} + R_{B,\,y} - T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) = 0 \\[1em]
-R_{A,\,z} + R_{B,\,z} + T_{\overline{CD}}\sin\left(\theta_{1}\right) = W \\[1em]
--(R_{A,\,z})(50) - (R_{B,\,z})(50) = -(W)(25) \\[1em]
--(R_{A,\,z})(74-21) + (R_{B,\,z})(21-10) = -(W)\left(\frac{84}{2} - 21\right) \\[1em]
+R_{A,\,x} + T_{\overline{CD}}\cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) = 0 \\
+R_{A,\,y} + R_{B,\,y} - T_{\overline{CD}}\cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) = 0 \\
+R_{A,\,z} + R_{B,\,z} + T_{\overline{CD}}\sin\left(\theta_{1}\right) = W \\
+-(R_{A,\,z})(50) - (R_{B,\,z})(50) = -(W)(25) \\
+-(R_{A,\,z})(74-21) + (R_{B,\,z})(21-10) = -(W)\left(\frac{84}{2} - 21\right) \\
 (R_{A,\,x})(50) + ((R_{A,\,y}))(74-21) - (R_{B,\,y})(21-10) = 0
 \end{Bmatrix}
 $$
@@ -178,27 +178,27 @@ That's kind of gross, but now we can write this as a matrix! Keep in mind that e
 
 $$
 \begin{bmatrix}
-1 & 0 & 0 & 0 & 0 & \cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) \\[1em]
-0 & 1 & 0 & 1 & 0 & \cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) \\[1em]
-0 & 0 & 1 & 0 & 1 & \sin\left(\theta_{1}\right) \\[1em]
-0 & 0 & -50 & 0 & -50 & 0 \\[1em]
-0 & 0 & -53 & 0 & 11 & 0 \\[1em]
+1 & 0 & 0 & 0 & 0 & \cos\left(\theta_{1}\right)\cos\left(\theta_{2}\right) \\
+0 & 1 & 0 & 1 & 0 & \cos\left(\theta_{1}\right)\sin\left(\theta_{2}\right) \\
+0 & 0 & 1 & 0 & 1 & \sin\left(\theta_{1}\right) \\
+0 & 0 & -50 & 0 & -50 & 0 \\
+0 & 0 & -53 & 0 & 11 & 0 \\
 50 & 53 & 0 & -11 & 0 & 0
 \end{bmatrix}
 \begin{Bmatrix}
-R_{A,\,x} \\[1em]
-R_{A,\,y} \\[1em]
-R_{A,\,z} \\[1em]
-R_{B,\,y} \\[1em]
-R_{B,\,z} \\[1em]
+R_{A,\,x} \\
+R_{A,\,y} \\
+R_{A,\,z} \\
+R_{B,\,y} \\
+R_{B,\,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
-0 \\[1em]
-0 \\[1em]
-W \\[1em]
--25W \\[1em]
--21W \\[1em]
+0 \\
+0 \\
+W \\
+-25W \\
+-21W \\
 0
 \end{Bmatrix}
 $$
@@ -228,19 +228,19 @@ Output:
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} \\[1em]
-R_{A,\,y} \\[1em]
-R_{A,\,z} \\[1em]
-R_{B,\,y} \\[1em]
-R_{B,\,z} \\[1em]
+R_{A,\,x} \\
+R_{A,\,y} \\
+R_{A,\,z} \\
+R_{B,\,y} \\
+R_{B,\,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
--108.5714\,\left[\mathrm{lb_{f}}\right] \\[1em]
-109.3750\,\left[\mathrm{lb_{f}}\right] \\[1em]
-99.3750\,\left[\mathrm{lb_{f}}\right] \\[1em]
-33.4821\,\left[\mathrm{lb_{f}}\right] \\[1em]
-20.6250\,\left[\mathrm{lb_{f}}\right] \\[1em]
+-108.5714\,\left[\mathrm{lb_{f}}\right] \\
+109.3750\,\left[\mathrm{lb_{f}}\right] \\
+99.3750\,\left[\mathrm{lb_{f}}\right] \\
+33.4821\,\left[\mathrm{lb_{f}}\right] \\
+20.6250\,\left[\mathrm{lb_{f}}\right] \\
 215.8609\,\left[\mathrm{lb_{f}}\right]
 \end{Bmatrix}
 $$
@@ -249,7 +249,7 @@ That was quite a bit of work and it was mostly unnecessary because the equation 
 
 But this is a robust example that demonstrates the power of matrix solution for a system of equations.
 
-## Systems of Eqns - Symbolic Toolbox
+## Systems of Equations - Symbolic Toolbox
 
 There is an even easier method for solving a system of equations, which makes use of the `Symbolic Toolbox` we saw in the previous chapter. Here, we can define symbolic variables and equations and utilize the `solve()` command.
 
@@ -257,7 +257,7 @@ Going back to our first example:
 
 $$
 \begin{Bmatrix}
-x + y = 10 \\[1em]
+x + y = 10 \\
 \displaystyle
 \frac{1}{2}x - y = -3
 \end{Bmatrix}
@@ -327,19 +327,19 @@ The output is exactly the same as before!
 
 $$
 \begin{Bmatrix}
-R_{A,\,x} \\[1em]
-R_{A,\,y} \\[1em]
-R_{A,\,z} \\[1em]
-R_{B,\,y} \\[1em]
-R_{B,\,z} \\[1em]
+R_{A,\,x} \\
+R_{A,\,y} \\
+R_{A,\,z} \\
+R_{B,\,y} \\
+R_{B,\,z} \\
 T_{\overline{CD}}
 \end{Bmatrix} =
 \begin{Bmatrix}
--108.5714\,\left[\mathrm{lb_{f}}\right] \\[1em]
-109.3750\,\left[\mathrm{lb_{f}}\right] \\[1em]
-99.3750\,\left[\mathrm{lb_{f}}\right] \\[1em]
-33.4821\,\left[\mathrm{lb_{f}}\right] \\[1em]
-20.6250\,\left[\mathrm{lb_{f}}\right] \\[1em]
+-108.5714\,\left[\mathrm{lb_{f}}\right] \\
+109.3750\,\left[\mathrm{lb_{f}}\right] \\
+99.3750\,\left[\mathrm{lb_{f}}\right] \\
+33.4821\,\left[\mathrm{lb_{f}}\right] \\
+20.6250\,\left[\mathrm{lb_{f}}\right] \\
 215.8609\,\left[\mathrm{lb_{f}}\right]
 \end{Bmatrix}
 $$
@@ -431,6 +431,6 @@ hold off
 
 `The maximum angle at which the block remains stationary is 31.82 degrees`
 
-![Plot of force balance](../images/ch5-friction-incline-plane.png){width=50%}
+![Plot of force balance](../images/ch5-friction-incline-plane.png)
 
 This work-through is certainly a bit advanced, but I am confident that you can work through what is happening step-by-step. If you are confused, read through `ch5_example.m` to get a more basic introduction to looping and then come back for another go at this again.
