@@ -16,7 +16,6 @@
 
 ### MATLAB Parallel Objectives
 
-- Conditional statements (account for multiple types of stress)
-- Plotting
+- Conditional statements (stress limits)
 - Nonlinear stress-strain functional relationship
-- In-line functions
+- In-line (anonymous) functions
