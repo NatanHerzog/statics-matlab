@@ -138,4 +138,75 @@ Note that now the graph ends right at the point at which the the yield condition
 
 ## In-line (anonymous) functions
 
+In MATLAB, there are `named functions` and `anonymous functions`. Both are generally used for defining a function that takes an input and returns *something*, but there are some key differences. For right now, I'm going to focus on `anonymous functions`.
+
+An `anonymous function` can have multiple inputs, but only returns a single output and it is associated with a variable inside of your program, rather than being an entirely separate script. For example, if we want to square a value, we might write the following code:
+
+```MATLAB
+sqr = @(x) x.^2;
+```
+
+This function, called `sqr`, takes an input, `x`, and squares it. The application of this function would look like this:
+
+```MATLAB
+a = linspace(1,10,10);
+sqrd = sqr(a);
+```
+
+`sqrd = [1 4 9 16 25 36 49 64 81 100]`
+
+Let's examine the application of this to Statics by creating anonymous functions to find normal and shear stresses, $\sigma$ and $\tau$, on a plane angled at $\theta$ off the vertical.
+
+As we've discussed in class
+
+$$
+R_{N} = F\cos(\theta)
+$$
+
+$$
+R_{T} = F\sin(\theta)
+$$
+
+$$
+A_{N} = \frac{A}{\cos(\theta)}
+$$
+
+These three relationships lead to the following definitions of stress in the plane
+
+$$
+\sigma_{avg} =
+\frac{R_{N}}{A_{N}} =
+\frac{F\cos(\theta)}{\displaystyle \left(\frac{A}{\cos(\theta)}\right)}
+$$
+
+$$
+\tau_{avg} =
+\frac{R_{T}}{A_{N}} =
+\frac{F\sin(\theta)}{\displaystyle \left(\frac{A}{\cos(\theta)}\right)}
+$$
+
+And these mathematical relationships translate perfectly into the following code:
+
+```MATLAB
+sigma_func = @(F, A, theta) F*cos(theta) ./ (A./cos(theta));
+tau_func = @(F, A, theta) F*sin(theta) ./ (A./cos(theta));
+```
+
+We can graph these to verify that they do exactly what we expect:
+
+```MATLAB
+F = 10; % [N]
+A = 5; % [m^2]
+theta = linspace(0,pi);
+plot(theta, sigma_func(F,A,theta), '-b')
+hold on
+plot(theta, tau_func(F,A,theta), '-r')
+hold off
+xlim([0, pi])
+xlabel('$\theta$','Interpreter','latex')
+ylabel('Stress [MPa]')
+legend('Normal Stress', 'Shear Stress')
+title('Stress vs. $\theta$', 'Interpreter', 'latex')
+```
+
 ## Nonlinear stress-strain functional relationship
