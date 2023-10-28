@@ -122,8 +122,7 @@ $$
 4.5174
 $$
 
-$$\displaystyle
-\bar{y} =
+$$\bar{y} =
 \frac{
     \int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{
         \int_{1}^{36} 6 - \sqrt{y} \,dy} =
