@@ -111,6 +111,8 @@ y_bar = double(simplify(numerator / denominator))   % solve y_bar
 
 Now, to justify that these answers are correct:
 
+For $\bar{x}$
+
 $$
 \bar{x} =
 \frac{\int_1^6 x^3 \,dx}{\int_1^6 x^2 \,dx}
@@ -140,9 +142,7 @@ $$
 
 $$
 \bar{y} =
-\frac{
-    \left. \frac{6}{2} y^2 - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{
-        \left. 6y - \frac{2}{3} y^{\frac{3}{2}} \right|_{1}^{36}} =
+\frac{\left. \frac{6}{2} y^2 - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{\left. 6y - \frac{2}{3} y^{\frac{3}{2}} \right|_{1}^{36}} =
 $$
 
 $$
