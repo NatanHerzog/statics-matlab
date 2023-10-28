@@ -142,7 +142,7 @@ $$
 
 $$
 \bar{y} =
-\frac{\left. \frac{6}{2} y^2 - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{\left. 6y - \frac{2}{3} y^{\frac{3}{2}} \right|_{1}^{36}} =
+\frac{\left. \frac{6}{2} y^{2} - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{\left. 6y - \frac{2}{3} y^{\frac{3}{2}} \right|_{1}^{36}} =
 \frac{
     \frac{6}{2}\left[36^2-1\right] - \frac{2}{5}\left[36^{\frac{5}{2}}-1\right]}{
         6\left[36-1\right] - \frac{2}{3}\left[36^{\frac{3}{2}}-1\right]} =
