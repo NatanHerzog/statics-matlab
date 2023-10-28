@@ -115,14 +115,20 @@ For $\bar{x}$
 
 $$
 \bar{x} =
-\frac{\int_1^6 x^3 \,dx}{\int_1^6 x^2 \,dx}
+\frac{\displaystyle\int_1^6 x^3 \,dx}{\displaystyle\int_1^6 x^2 \,dx}
 $$
 
 $$
 \bar{x} =
-\frac{\frac{1}{4}\left.x^4\right|_1^6}{\frac{1}{3}\left.x^3\right|_1^6} =
-\frac{\frac{1}{4}\left[6^4 - 1\right]}{\frac{1}{3}\left[6^3 - 1\right]} =
-\frac{\frac{1295}{4}}{\frac{215}{3}} =
+\frac{\displaystyle
+    \frac{1}{4}\left.x^4\right|_1^6}{\displaystyle
+    \frac{1}{3}\left.x^3\right|_1^6} =
+\frac{\displaystyle
+    \frac{1}{4}\left[6^4 - 1\right]}{\displaystyle
+    \frac{1}{3}\left[6^3 - 1\right]} =
+\frac{\displaystyle
+    \frac{1295}{4}}{\displaystyle
+    \frac{215}{3}} =
 \frac{(1295)(3)}{(215)(4)}
 $$
 
@@ -135,21 +141,21 @@ And for $\bar{y}$:
 
 $$
 \bar{y} =
-\frac{
-    \int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{
+\frac{\displaystyle
+    \int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle
         \int_{1}^{36} 6 - \sqrt{y} \,dy}
 $$
 
 $$
 \bar{y} =
-\frac{
-    \left. \frac{6}{2} y^{2} - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{
+\frac{\displaystyle
+    \left. \frac{6}{2} y^{2} - \frac{2}{5} y^{\frac{5}{2}} \right|_{1}^{36}}{\displaystyle
         \left. 6y - \frac{2}{3} y^{\frac{3}{2}} \right|_{1}^{36}} =
-\frac{
-    \frac{6}{2}\left[36^2-1\right] - \frac{2}{5}\left[36^{\frac{5}{2}}-1\right]}{
+\frac{\displaystyle
+    \frac{6}{2}\left[36^2-1\right] - \frac{2}{5}\left[36^{\frac{5}{2}}-1\right]}{\displaystyle
         6\left[36-1\right] - \frac{2}{3}\left[36^{\frac{3}{2}}-1\right]} =
-\frac{
-    \frac{6}{2}(1295) - \frac{2}{5}(7775)}{
+\frac{\displaystyle
+    \frac{6}{2}(1295) - \frac{2}{5}(7775)}{\displaystyle
         (6)(35) - \frac{2}{3}(215)}
 $$
 
