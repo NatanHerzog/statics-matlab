@@ -209,4 +209,20 @@ legend('Normal Stress', 'Shear Stress')
 title('Stress vs. $\theta$', 'Interpreter', 'latex')
 ```
 
-## Nonlinear stress-strain functional relationship
+![Plot of normal and shear stresses against the plane angle $\theta](../images/axial-stress-vs-theta.png)
+
+This can be extremely helpful for simplifying the calculation of stresses in complex structures, like a bridge (hint hint). When a calculation needs to be performed many times, it is preferred to define a function and then include a call to it whenever you need the calculation.
+
+## Practice Question Reference
+
+For the practice question, we are going to make use of both `conditional looping` and `anonymous functions` to explore an alternative approach to $\mathrm{P}.6.18$ from Homework $8$. Rather than simply calculating the allowable diameter of the bar, let's define loops to perform a sweep of many diametrical values. And to calculate the stresses present, define anonymous functions. Refer to `ch6_practice.m` for a step-by-step instruction.
+
+From the homework question:
+
+$$F = \frac{1}{2}\left(75\,\left[\mathrm{kg}\right]\right)\left(9.81\,\left[\frac{\mathrm{m}}{\mathrm{s}^2}\right]\right)$$
+
+$$\sigma_{y,\,\mathrm{block}} \leq 3.4\,\left[\mathrm{MPa}\right]$$
+
+$$\tau_{y,\,\mathrm{rod}} \leq 4.25\,\left[\mathrm{MPa}\right]$$
+
+![P.6.18 Image](../images/P.6.18.png)
