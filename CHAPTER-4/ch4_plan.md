@@ -122,8 +122,7 @@ $$
 4.5174
 $$
 
-$$
-\displaystyle
+$$\displaystyle
 \bar{y} =
 \frac{
     \int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{
@@ -137,8 +136,7 @@ $$
 \frac{
     \frac{6}{2}(1295) - \frac{2}{5}(7775)}{
         (6)(35) - \frac{2}{3}(215)} =
-11.6250
-$$
+11.6250$$
 
 $$
 \displaystyle
