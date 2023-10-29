@@ -10,7 +10,7 @@ For example, let's explore the following integral:
 
 $$
 \displaystyle
-\int x^2 dx = \frac{x^3}{3}
+\int \left(x^2\right) dx = \frac{x^3}{3}
 $$
 
 We can replicate this in MATLAB as follows:
@@ -28,7 +28,7 @@ We can also include limits of integration.
 
 $$
 \displaystyle
-\int_{0}^{5} x^2 dx =
+\int_{0}^{5} \left(x^2\right) dx =
 \frac{1}{3}
 \left(
     \left.x^3\right|_{x=5} - \left.x^3\right|_{x=0}
@@ -56,11 +56,11 @@ These are fairly simple examples, but it can be used for everything we need for 
 As a reminder, here are the governing equations for the $(\bar{x},\bar{y})$ coordinates of a body's center of area:
 
 $$
-\bar{x} = \frac{\displaystyle\int x dA}{\displaystyle\int dA}
+\bar{x} = \frac{\displaystyle\int \left(x\right) dA}{\displaystyle\int dA}
 $$
 
 $$
-\bar{y} = \frac{\displaystyle\int y dA}{\displaystyle\int dA}
+\bar{y} = \frac{\displaystyle\int \left(y\right) dA}{\displaystyle\int dA}
 $$
 
 Let's find the center of area for the curve $y = x^2$ on the interval $\left[1,6\right]$.
@@ -75,15 +75,15 @@ $$
 $$
 \bar{x} =
 \frac{\displaystyle
-    \int_1^6 x dA}{\displaystyle
+    \int_1^6 \left(x\right) dA}{\displaystyle
     \int_1^6 dA} =
 \frac{\displaystyle
-    \int_1^6 (x)(x^2) dx}{\displaystyle
-    \int_1^6 x^2 dx}
+    \int_1^6 \left((x)(x^2)\right) dx}{\displaystyle
+    \int_1^6 \left(x^2\right) dx}
 \Rightarrow \left[\bar{x} =
 \frac{\displaystyle
-    \int_1^6 x^3 dx}{\displaystyle
-    \int_1^6 x^2 dx}\right]
+    \int_1^6 \left(x^3\right) dx}{\displaystyle
+    \int_1^6 \left(x^2\right) dx}\right]
 $$
 
 This is very simple in MATLAB:
@@ -107,15 +107,15 @@ $$
 $$
 \bar{y} =
 \frac{\displaystyle
-    \int_{y=1^2}^{y=6^2} y dA}{\displaystyle
+    \int_{y=1^2}^{y=6^2} \left(y\right) dA}{\displaystyle
     \int_{y=1^2}^{y=6^2} dA} =
 \frac{\displaystyle
-    \int_{1}^{36} (y)(6 - \sqrt{y}) dy}{\displaystyle
-    \int_{1}^{36} 6 - \sqrt{y} dy}
+    \int_{1}^{36} \left((y)(6 - \sqrt{y})\right) dy}{\displaystyle
+    \int_{1}^{36} \left(6 - \sqrt{y}\right) dy}
 \Rightarrow \left[\bar{y} =
 \frac{\displaystyle
-    \int_{1}^{36} 6y - y^{\frac{3}{2}} dy}{\displaystyle
-    \int_{1}^{36} 6 - \sqrt{y} dy}\right]
+    \int_{1}^{36} \left(6y - y^{\frac{3}{2}}\right) dy}{\displaystyle
+    \int_{1}^{36} \left(6 - \sqrt{y}\right) dy}\right]
 $$
 
 Again, this is very simple in MATLAB:
@@ -135,7 +135,7 @@ For $\bar{x}$
 
 $$
 \bar{x} =
-\frac{\displaystyle\int_1^6 x^3 dx}{\displaystyle\int_1^6 x^2 dx}
+\frac{\displaystyle\int_1^6 \left(x^3\right) dx}{\displaystyle\int_1^6 \left(x^2\right) dx}
 $$
 
 $$
@@ -162,8 +162,8 @@ And for $\bar{y}$:
 $$
 \bar{y} =
 \frac{\displaystyle
-    \int_{1}^{36} 6y - y^{\frac{3}{2}} dy}{\displaystyle
-        \int_{1}^{36} 6 - \sqrt{y} dy}
+    \int_{1}^{36} \left(6y - y^{\frac{3}{2}}\right) dy}{\displaystyle
+        \int_{1}^{36} \left(6 - \sqrt{y}\right) dy}
 $$
 
 $$
