@@ -29,14 +29,8 @@ We can also include limits of integration.
 $$
 \displaystyle
 \int_{0}^{5} \left(x^2\right) dx =
-\frac{1}{3}
-\left(
-    \left.x^3\right|_{x=5} - \left.x^3\right|_{x=0}
-\right) =
-\frac{1}{3}
-\left(
-    5^3 - 0
-\right) =
+\frac{1}{3}\left(\left.x^3\right|_{x=5} - \left.x^3\right|_{x=0}\right) =
+\frac{1}{3}\left(5^3 - 0\right) =
 \frac{125}{3}
 $$
 
