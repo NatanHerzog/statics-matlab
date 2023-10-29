@@ -376,7 +376,13 @@ For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we k
 
 $$
 \overrightarrow{F}_f =
+$$
+
+$$
 -F_{N,x} \hat{\imath} +
+$$
+
+$$
 \left(
   -W_{y} - F_{N,y}
 \right) \hat{\jmath}
