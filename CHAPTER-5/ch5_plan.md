@@ -359,23 +359,23 @@ Now, since we're going to change the value of $\phi$, we have to write each of t
 The block's weight will always act downwards, in the $-\hat{\jmath}$ directions. But $F_{N}$ and $F_{f}$ will have components in both the $\hat{\imath}$ and $\hat{\jmath}$ directions, as follows:
 
 $$
-\overrightarrow{W} = 0\hat{\imath} - 10\hat{\jmath}
+\textbf{W} = 0\hat{\imath} - 10\hat{\jmath}
 $$
 
 $$
-\overrightarrow{F}_{N} = \left(\Vert\overrightarrow{W}\Vert\cos(\phi)\right)\left(\sin(\phi)\hat{\imath} + \cos(\phi)\hat{\jmath}\right)
+\textbf{F}_{N} = \left(\Vert\textbf{W}\Vert\cos(\phi)\right)\left(\sin(\phi)\hat{\imath} + \cos(\phi)\hat{\jmath}\right)
 $$
 
 $$
-\overrightarrow{F}_f = \left( \mu_s \Vert \overrightarrow{F}_N \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
+\textbf{F}_f = \left( \mu_s \Vert \textbf{F}_N \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
 $$
 
 But remember that the magnitude of static friction force is only ever as high as it needs to be to oppose the other forces. This means that as long as the forces acting along the inclined plane are not equal to the maximum possible static friction force, the value of $F_{f}$ will not be equal to the equation shown above.
 
-For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\overrightarrow{W} + \overrightarrow{F}_{N}$, as follows:
+For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\textbf{w} + \textbf{F}_{N}$, as follows:
 
 $$
-\overrightarrow{F}_{f} =
+\textbf{F}_{f} =
 -F_{N,x} \hat{\imath} +
 \left(
   -W_{y} - F_{N,y}
