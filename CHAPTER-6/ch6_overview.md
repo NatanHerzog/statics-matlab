@@ -1,6 +1,7 @@
 # Stress and Strain
 
 ### Textbook Learning Objectives
+
 - Determine the normal and shear stress generated within an axially loaded member, and where the maxima occur
 - Determine if an axially loaded member is in compression or tension
 - Determine the bearing stress within an axially loaded member
@@ -14,7 +15,6 @@
 - How to solve statically indeterminate systems using the Superposition Method
 
 ### MATLAB Parallel Objectives
-- Conditional statements (account for multiple types of stress)
-- Plotting
-- Nonlinear stress-strain functional relationship
-- In-line functions
+
+- Conditional statements (stress limits)
+- In-line (anonymous) functions
