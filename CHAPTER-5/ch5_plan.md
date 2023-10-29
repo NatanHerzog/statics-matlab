@@ -372,7 +372,7 @@ $$
 
 But remember that the magnitude of static friction force is only ever as high as it needs to be to oppose the other forces. This means that as long as the forces acting along the inclined plane are not equal to the maximum possible static friction force, the value of $F_{f}$ will not be equal to the equation shown above.
 
-For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\textbf{w} + \textbf{F}_{N}$, as follows:
+For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\textbf{W} + \textbf{F}_{N}$, as follows:
 
 $$
 \textbf{F}_{f} \Rightarrow \left(-F_{N,x}\right) \hat{\imath} + \left(-W_{y} - F_{N,y}\right) \hat{\jmath}
@@ -380,7 +380,7 @@ $$
 
 $$\textbf{F}_{f}$$
 
-$$\textbf{F}_{f} \Rightarrow \left(-F_{N,x}\right)$$
+$$\textbf{F_{f}} \Rightarrow \left(-F_{N,x}\right)$$
 
 $$\Rightarrow \left(-F_{N,x}\right) \hat{\imath} + \left(-W_{y} - F_{N,y}\right) \hat{\jmath}$$
 
