@@ -380,9 +380,6 @@ $$
 
 $$
 -F_{N,x} \hat{\imath} +
-$$
-
-$$
 \left(
   -W_{y} - F_{N,y}
 \right) \hat{\jmath}
