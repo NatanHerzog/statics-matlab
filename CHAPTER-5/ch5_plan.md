@@ -381,9 +381,14 @@ $$
 $$\textbf{F}_{f}$$
 
 $$
-\textbf{F}_{f}
+\textbf{F}_{f,x}
 \Rightarrow
-\left(-F_{N,x}\right) \hat{\imath} +
+\left(-F_{N,x}\right) \hat{\imath}
+$$
+
+$$
+\textbf{F}_{f,y}
+\Rightarrow
 \left(-W_{y} - F_{N,y}\right) \hat{\jmath}
 $$
 
