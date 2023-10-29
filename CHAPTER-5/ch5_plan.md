@@ -375,10 +375,7 @@ But remember that the magnitude of static friction force is only ever as high as
 For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\overrightarrow{W} + \overrightarrow{F}_{N}$, as follows:
 
 $$
-\overrightarrow{F}_f =
-$$
-
-$$
+F_f =
 -F_{N,x} \hat{\imath} +
 \left(
   -W_{y} - F_{N,y}
