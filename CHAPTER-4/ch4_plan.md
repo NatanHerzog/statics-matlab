@@ -128,7 +128,7 @@ y_bar = double(simplify(numerator / denominator))   % solve y_bar
 ```
 
 `output: y_bar = 11.6250`
-
+<!-- 
 Now, to justify that these answers are correct:
 
 For $\bar{x}$
@@ -187,7 +187,7 @@ $$
 $$
 \displaystyle
 \left(\bar{x},\bar{y}\right) = \left(4.5174,11.6250\right)
-$$
+$$ -->
 
 Hopefully it is clear to see that MATLAB makes these calculations significantly simpler!
 
