@@ -376,8 +376,8 @@ For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we k
 
 $$
 \overrightarrow{F}_f =
--F_{N,x} \hat{\imath} +
-\left( -W_{y} - F_{N,y} \right) \hat{\jmath}
+-F_{N,x} \hat{i} +
+\left( -W_{y} - F_{N,y} \right) \hat{j}
 $$
 
 Armed with these equations, we can write a loop to analyze the system in MATLAB:
