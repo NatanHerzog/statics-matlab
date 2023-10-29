@@ -56,9 +56,8 @@ These are fairly simple examples, but it can be used for everything we need for 
 As a reminder, here are the governing equations for the $(\bar{x},\bar{y})$ coordinates of a body's center of area:
 
 $$
-\displaystyle
-\bar{x} = \frac{\int x \,dA}{\int dA},\,
-\bar{y} = \frac{\int y \,dA}{\int dA}
+\bar{x} = \frac{\displaystyle\int x \,dA}{\displaystyle\int dA},\,
+\bar{y} = \frac{\displaystyle\int y \,dA}{\displaystyle\int dA}
 $$
 
 Let's find the center of area for the curve $y = x^2$ on the interval $\left[1,6\right]$.
@@ -71,8 +70,17 @@ dA = (width)(height) = (dx)(x^2)
 $$
 
 $$
-\displaystyle
-\bar{x} = \frac{\int_1^6 x \,dA}{\int_1^6 dA} = \frac{\int_1^6 (x)(x^2)\,dx}{\int_1^6 x^2 \,dx} \Rightarrow \left[\bar{x} = \frac{\int_1^6 x^3 \,dx}{\int_1^6 x^2 \,dx}\right]
+\bar{x} =
+\frac{\displaystyle
+    \int_1^6 x \,dA}{\displaystyle
+    \int_1^6 dA} =
+\frac{\displaystyle
+    \int_1^6 (x)(x^2)\,dx}{\displaystyle
+    \int_1^6 x^2 \,dx}
+\Rightarrow \left[\bar{x} =
+\frac{\displaystyle
+    \int_1^6 x^3 \,dx}{\displaystyle
+    \int_1^6 x^2 \,dx}\right]
 $$
 
 This is very simple in MATLAB:
@@ -94,9 +102,18 @@ dA = (width)(height) = \left(6 - \sqrt{y}\right)(dy)
 $$
 
 $$
-\displaystyle
-\bar{y} = \frac{\int_{y=1^2}^{y=6^2} y \,dA}{\int_{y=1^2}^{y=6^2} dA} = \frac{\int_{1}^{36} (y)(6 - \sqrt{y}) \,dy}{\int_{1}^{36} 6 - \sqrt{y} \,dy}
-\Rightarrow \left[\bar{y} = \frac{\int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\int_{1}^{36} 6 - \sqrt{y} \,dy}\right]$$
+\bar{y} =
+\frac{\displaystyle
+    \int_{y=1^2}^{y=6^2} y \,dA}{\displaystyle
+    \int_{y=1^2}^{y=6^2} dA} =
+\frac{\displaystyle
+    \int_{1}^{36} (y)(6 - \sqrt{y}) \,dy}{\displaystyle
+    \int_{1}^{36} 6 - \sqrt{y} \,dy}
+\Rightarrow \left[\bar{y} =
+\frac{\displaystyle
+    \int_{1}^{36} 6y - y^{\frac{3}{2}} \,dy}{\displaystyle
+    \int_{1}^{36} 6 - \sqrt{y} \,dy}\right]
+$$
 
 Again, this is very simple in MATLAB:
 
