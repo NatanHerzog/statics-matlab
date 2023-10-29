@@ -12,4 +12,4 @@
 
 - Systems of equations in matrix form
 - Systems of equations in symbolic form
-- Introduction to for loops when we reach for loops (function of theta)
+- Introduction to for loops
