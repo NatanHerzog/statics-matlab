@@ -28,10 +28,7 @@ We can also include limits of integration.
 
 $$
 \displaystyle
-\int_{0}^{5} \left(x^2\right) dx =
-\frac{1}{3}\left(\left.x^3\right|_5 - \left.x^3\right|_0\right) =
-\frac{1}{3}\left(5^3 - 0\right) =
-\frac{125}{3}
+\int_{0}^{5} \left(x^2\right) dx
 $$
 
 ```MATLAB
