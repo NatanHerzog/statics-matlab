@@ -380,9 +380,12 @@ $$
 
 $$\textbf{F}_{f}$$
 
-$$\textbf{F_{f}} \Rightarrow \left(-F_{N,x}\right)$$
-
-$$\Rightarrow \left(-F_{N,x}\right) \hat{\imath} + \left(-W_{y} - F_{N,y}\right) \hat{\jmath}$$
+$$
+\textbf{F}_{f}
+\Rightarrow
+\left(-F_{N,x}\right) \hat{\imath} +
+\left(-W_{y} - F_{N,y}\right) \hat{\jmath}
+$$
 
 Armed with these equations, we can write a loop to analyze the system in MATLAB:
 
