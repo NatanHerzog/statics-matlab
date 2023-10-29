@@ -219,10 +219,10 @@ For the practice question, we are going to make use of both `conditional looping
 
 From the homework question:
 
-$$F = \frac{1}{2}\left(75\,\left[\mathrm{kg}\right]\right)\left(9.81\,\left[\frac{\mathrm{m}}{\mathrm{s}^2}\right]\right)$$
+$$F = \frac{1}{2}\left(75\left[\mathrm{kg}\right]\right)\left(9.81\left[\frac{\mathrm{m}}{\mathrm{s}^2}\right]\right)$$
 
-$$\sigma_{y,\,\mathrm{block}} \leq 3.4\,\left[\mathrm{MPa}\right]$$
+$$\sigma_{y,\mathrm{block}} \leq 3.4\left[\mathrm{MPa}\right]$$
 
-$$\tau_{y,\,\mathrm{rod}} \leq 4.25\,\left[\mathrm{MPa}\right]$$
+$$\tau_{y,\mathrm{rod}} \leq 4.25\left[\mathrm{MPa}\right]$$
 
 ![P.6.18 Image](../images/P.6.18.png)
