@@ -375,22 +375,10 @@ But remember that the magnitude of static friction force is only ever as high as
 For this problem, if we use the forms above and find $\sum F_{x} < 0$, then we know that the force of friction is not actually as high as we calculated. We adjust its magnitude in the $x$ and $y$ directions to directly oppose the sum of $\textbf{W} + \textbf{F}_{N}$, as follows:
 
 $$
-\textbf{F}_f = \left( \mu_s \Vert \textbf{F}_N \Vert \right) \left( -\cos(\phi) \hat{\imath} + \sin(\phi) \hat{\jmath} \right)
+\textbf{F}_f = \left( \mu_s \Vert \textbf{F}_N \Vert \right) \left( \left(-F_{N,x}\right) \hat{\imath} + \left(-W_{y} - F_{N,y}\right) \hat{\jmath} \right)
 $$
 
 $\textbf{F}_{f} \Rightarrow \left(-F_{N,x}\right) \hat{\imath} + \left(-W_{y} - F_{N,y}\right) \hat{\jmath}$
-
-$$
-\textbf{F}_{f,x}
-\Rightarrow
-\left(-F_{N,x}\right) \hat{\imath}
-$$
-
-$$
-\textbf{F}_{f,y}
-\Rightarrow
-\left(-W_{y} - F_{N,y}\right) \hat{\jmath}
-$$
 
 Armed with these equations, we can write a loop to analyze the system in MATLAB:
 
