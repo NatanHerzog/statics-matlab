@@ -79,7 +79,7 @@ Then we can apply the method of joints at all of the nodes.
 
 **Be sure to follow the proper convention**: *all internal reactionary forces point towards the node in question*.
 
-### Pin $\mathrm{A}$
+### Pin A
 
 ```MATLAB
 % <><><>< Pin A ><><><> %
@@ -91,7 +91,7 @@ F_x_A = R_x_A - F_AB*cosd(THETA) - F_AC == 0;
 F_y_A = R_y_A - F_AB*sind(THETA) == 0;
 ```
 
-### Pin $\mathrm{B}$
+### Pin B
 
 ```MATLAB
 % <><><>< Pin B ><><><> %
@@ -103,7 +103,7 @@ F_x_B = F_AB*cosd(THETA) - F_BD*cosd(THETA) - F_BC*cosd(THETA) == 0;
 F_y_B = F_AB*sind(THETA) - F_BD*sind(THETA) + F_BC*sind(THETA) - LOAD == 0;
 ```
 
-### Pin $\mathrm{C}$
+### Pin C
 
 ```MATLAB
 % <><><>< Pin C ><><><> %
@@ -115,7 +115,7 @@ F_x_C = F_AC + F_BC*cosd(THETA) - F_CE*cosd(THETA) - F_CF == 0;
 F_y_C = -F_BC*sind(THETA) - F_CD - F_CE*sind(THETA) == 0;
 ```
 
-### Pin $\mathrm{D}$
+### Pin D
 
 ```MATLAB
 % <><><>< Pin D ><><><> %
@@ -127,7 +127,7 @@ F_x_D = F_BD*cosd(THETA) - F_DE*cosd(THETA) == 0;
 F_y_D = F_BD*sind(THETA) + F_CD + F_DE*sind(THETA) == 0;
 ```
 
-### Pin $\mathrm{E}$
+### Pin E
 
 ```MATLAB
 % <><><>< Pin E ><><><> %
@@ -139,7 +139,7 @@ F_x_E = F_DE*cosd(THETA) + F_CE*cosd(THETA) - F_EF*cosd(THETA) == 0;
 F_y_E = -F_DE*sind(THETA) + F_CE*sind(THETA) + F_EF*sind(THETA) - LOAD == 0;
 ```
 
-### Pin $\mathrm{F}$
+### Pin F
 
 ```MATLAB
 % <><><>< Pin F ><><><> %
