@@ -52,9 +52,9 @@ BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter        
 AREA_BOLT = BOLT_DIAMETER * SQRT(AREA_TRUSS); % define the bolt area                  [m^2]
 TENSILE_YIELD = 500 * 10^6;                   % define the tensile yield strength     [Pa]
 COMPRESSIVE_YIELD = 300 * 10^6;               % define the compressive yield strength [Pa]
-SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength       [Pa]
+SHEAR_YIELD = 0.250 * 10^6;                   % define the shear yield strength       [Pa]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
-LOAD = 10 * norm([6,2]);                      % define the load that acts on B and E  [kN]
+LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
 % <><><>< BRIDGE BROKEN BOOLEANS ><><><> %
 
@@ -188,25 +188,25 @@ R_y_F = double(internal_forces.R_y_F)
 
 This code returns that the internal forces within the bridge are as follows:
 
-| Internal Force | Value $[\mathrm{kN}]$| Tensile / Compressive |
+| Internal Force | Value $[\mathrm{N}]$ | Tensile / Compressive |
 | --- | --- | --- |
-| $F_{\overline{\mathrm{AB}}}$ | $200$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{AC}}}$ | $-189.7367$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{BC}}}$ | $100$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{BD}}}$ | $100$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{CD}}}$ | $-63.2456$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{CE}}}$ | $100$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{CF}}}$ | $-189.7367$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{DE}}}$ | $100$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{EF}}}$ | $200$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{AB}}}$ | $200000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{AC}}}$ | $-189.36.7$ | Negative $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{BC}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{BD}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{CD}}}$ | $-63245.6$ | Negative $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{CE}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{CF}}}$ | $-189736.7$ | Negative $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{DE}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{EF}}}$ | $200000$ | Positive $\longrightarrow$ Tensile |
 
 And that the reactionary forces at nodes $\mathrm{A}$ and $\mathrm{F}$ are as follows:
 
-| Reactionary Force | Value |
+| Reactionary Force | Value $[\mathrm{N}]$ |
 | --- | --- |
-| $R_{x,A}$ | $0 [\mathrm{kN}]$ |
-| $R_{y,A}$ | $63.2456 [\mathrm{kN}]$ |
-| $R_{y,F}$ | $63.2456 [\mathrm{kN}]$ |
+| $R_{x,A}$ | $0$ |
+| $R_{y,A}$ | $63.2456$ |
+| $R_{y,F}$ | $63.2456$ |
 
 ### Stresses
 
