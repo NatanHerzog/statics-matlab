@@ -1,6 +1,7 @@
 # Frames and Machines
 
 ### Textbook Learning Objectives
+
 - Understand the behavior of two-force members
 - Analyze trusses using the Method of Joints
 - Analyze trusses using the Method of Sections
@@ -11,5 +12,7 @@
 - Identify the difference between machines and frames, and analyze machines using equilibrium equations
 
 ### MATLAB Parallel Objectives
-- Optimization methods
+
+- Modeling a bridge in MATLAB
+- Bridge Optimization
 - Ex6 (piston problem, want torque as function of angular position)
