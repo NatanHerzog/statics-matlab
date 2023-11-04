@@ -1,4 +1,4 @@
-# Chapter 7
+# Chapter 7 (Part 1)
 
 ## Modeling a Bridge in MATLAB
 
@@ -67,8 +67,8 @@ calculate_stress = @(F, A) F ./ A;
   % Initialize these as `false`
   % They will be toggled to `true` if a corresponding stress exceeds its limit
 
-TENSILE_FAILUE = false;                       % used to signal a tensile stress failure
-COMPRESSIVE_FAILUE = false;                   % used to signal a compressive stress failure
+TENSILE_FAILURE = false;                      % used to signal a tensile stress failure
+COMPRESSIVE_FAILURE = false;                  % used to signal a compressive stress failure
 BEARING_FAILURE = false;                      % used to signal a bearing stress failure
 SHEAR_FAILURE = false;                        % used to signal a shear stress failure
 ```
@@ -253,13 +253,13 @@ bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
 From here, we can query whether any of the internal stress exceed their allowable values.
 
 ```MATLAB
-TENSILE_FAILUE = any(tensile_stress > TENSILE_YIELD)
+TENSILE_FAILURE = any(tensile_stress > TENSILE_YIELD)
 COMPRESSIVE_FAILURE = any(compressive_stress > COMPRESSIVE_YIELD)
 SHEAR_FAILURE = any(shear_stress > SHEAR_YIELD)
 BEARING_FAILURE = any(bearing_stress > COMPRESSIVE_YIELD)
 ```
 
-All of this code, written as a single script in `ch7_example.m`, returns the following Boolean (`true`/`false`) values
+All of this code, written as a single script in `ch7_example_1.m`, returns the following Boolean (`true`/`false`) values
 
 | Failure Condition | Value |
 | --- | --- |
@@ -269,7 +269,3 @@ All of this code, written as a single script in `ch7_example.m`, returns the fol
 | Bearing | `true` |
 
 This indicates that with the given Queen Post truss, constructed with the given member cross-sections and bolts, under the given load, the system will fail in Bearing Stress.
-
-## Bridge Optimization
-
-## Torque as Function of Angular Position

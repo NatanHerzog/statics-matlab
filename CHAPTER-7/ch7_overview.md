@@ -15,4 +15,4 @@
 
 - Modeling a bridge in MATLAB
 - Bridge Optimization
-- Ex6 (piston problem, want torque as function of angular position)
+- Piston Torque
