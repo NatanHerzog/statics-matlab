@@ -112,6 +112,55 @@ function [tensile_stress, compressive_stress, shear_stress, bearing_stress] = BR
 end
 ```
 
-What we have just accomplished is determining the load that the truss structure, as defined by the angle $\theta$, with stand. Now we want to optimize the design (optimize the angle $\theta$).
+What we have just accomplished is determining the load that the truss structure, as defined by the angle $\theta$, can withstand. Now we want to optimize the design (optimize the angle $\theta$).
 
-We can do this by placing the entire `while` loop we have just written into a `for` loop that iterates over a range of values for $\theta$. This way, we can evaluate the performance of the bridge at every value of $\theta$ and determine the best value of $\theta$ based on our definition of best 'performance'.
+We can do this by placing the entire `while` loop into a `for` loop that iterates over a range of values for $\theta$. This way, we can evaluate the performance of the bridge at every value of $\theta$ and determine the best value based on our definition of best 'performance'. For this project, we are interested in optimizing the performance index, calculated as follows:
+
+$$\mathrm{PI} = \frac{P}{WC}$$
+
+Where $P$ is the load withstood by the bridge, $W$ is the weight of the bridge itself, and $C$ is the cost of the bridge (including material and environmental costs).
+
+We just found a way to get $P$.
+
+$W$ is calculated by taking the density of the material, roughly $\rho = 150\left[\frac{\mathrm{kg}}{\mathrm{m}^3}\right]$, and multiplying by the total volume of wood, calculated with the cross-sectional area $A_{\mathrm{xs}}$ and the total length of wood in the bridge.
+
+We can define the lengths of every member in the bridge as follows:
+
+| Member | Length Formula |
+| --- | --- |
+| $\overline{AB}$ | `L_AB = norm([LENGTH//4, HEIGHT/2])` |
+| $\overline{AC}$ | `L_AC = norm([LENGTH//2, 0])` |
+| $\overline{BC}$ | `L_BC = norm([LENGTH//4, HEIGHT/2])` |
+| $\overline{BD}$ | `L_BD = norm([LENGTH//4, HEIGHT/2])` |
+| $\overline{CD}$ | `L_CD = norm([0, HEIGHT])` |
+| $\overline{CE}$ | `L_CE = norm([LENGTH//4, HEIGHT/2])` |
+| $\overline{CF}$ | `L_CF = norm([LENGTH//2, ])` |
+| $\overline{DE}$ | `L_DE = norm([LENGTH//4, HEIGHT/2])` |
+| $\overline{EF}$ | `L_EF = norm([LENGTH//4, HEIGHT/2])` |
+
+And remember that `HEIGHT` is going to change as a function of $\theta$.
+
+```MATLAB
+HEIGHT = @(t) tand(t) * LENGTH/2;
+```
+
+Therefore, the total length of balsa wood in the bridge is:
+
+$$L_{\mathrm{tot}} = 6\sqrt{\left(\frac{\mathrm{LENGTH}}{4}\right)^2 + \left(\frac{\mathrm{HEIGHT}}{2}\right)^2} + 2\frac{\mathrm{LENGTH}}{2} + \mathrm{HEIGHT}$$
+
+And the volume, $V$, of the wood can be calculated as follows:
+
+$$V_{\mathrm{tot}} = L_{\mathrm{tot}}A_{\mathrm{xs}}$$
+
+Then the total weight of the bridge is calculated, in $[\mathrm{N}]$, as follows:
+
+$$W = \rho L_{\mathrm{tot}}A_{\mathrm{xs}}$$
+
+In MATLAB, these calculations are as follows:
+
+```MATLAB
+L_tot = 6*sqrt((LENGTH/4)^2 + (HEIGHT/2)^2) + 2*LENGTH/2 + HEIGHT(THETA);
+W = DENSITY * L_tot * AREA_TRUSS * 9.81;
+```
+
+And we know from the project document that bolts cost

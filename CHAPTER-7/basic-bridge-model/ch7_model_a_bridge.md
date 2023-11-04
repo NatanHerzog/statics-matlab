@@ -6,7 +6,7 @@ I introduced the `Symbolic Toolbox` for solving a system of equations in `ch5_pl
 
 That is important because we model truss structures as a large system of equations. Take the figure below showing a Queen Post bridge, used in Example $4$ of Chapter $7$ in the TopHat textbook.
 
-![Queen Post Bridge](../images/Queen_post-01.png)
+![Queen Post Bridge](../../images/Queen_post-01.png)
 
 There are $6$ total nodes in this truss structure: $\mathrm{A}$, $\mathrm{B}$, $\mathrm{C}$, $\mathrm{D}$, $\mathrm{E}$, and $\mathrm{F}$. We will solve for all of the forces acting within this truss by applying the Method of Joints at each node. And unlike the the TopHat textbook, we will make use of the `Symbolic Toolbox` to cast equations symbolically and solve the system much more simply.
 
