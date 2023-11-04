@@ -34,11 +34,11 @@ $$A_{\mathrm{bolt}} = t_{\mathrm{truss}}d_{\mathrm{bolt}} = (0.1[\mathrm{m}]) (4
 
 And finally, we define the yield criteria for this truss.
 
-$$\sigma_{y,\mathrm{T}} = $$
+$$\sigma_{y,\mathrm{T}} = 500[\mathrm{MPa}]$$
 
-$$\sigma_{y,\mathrm{C}} = $$
+$$\sigma_{y,\mathrm{C}} = 300[\mathrm{MPa}]$$
 
-$$\tau_{y} = $$
+$$\tau_{y} = 250[\mathrm{MPa}]$$
 
 With this information, we can go into MATLAB and define global parameters for the solution:
 
@@ -52,7 +52,7 @@ BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter        
 AREA_BOLT = BOLT_DIAMETER * SQRT(AREA_TRUSS); % define the bolt area                  [m^2]
 TENSILE_YIELD = 500 * 10^6;                   % define the tensile yield strength     [Pa]
 COMPRESSIVE_YIELD = 300 * 10^6;               % define the compressive yield strength [Pa]
-SHEAR_YIELD = 0.250 * 10^6;                   % define the shear yield strength       [Pa]
+SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength       [Pa]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
@@ -190,15 +190,15 @@ This code returns that the internal forces within the bridge are as follows:
 
 | Internal Force | Value $[\mathrm{N}]$ | Tensile / Compressive |
 | --- | --- | --- |
-| $F_{\overline{\mathrm{AB}}}$ | $200000$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{AC}}}$ | $-189.36.7$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{BC}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{BD}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{CD}}}$ | $-63245.6$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{CE}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{CF}}}$ | $-189736.7$ | Negative $\longrightarrow$ Compressive |
-| $F_{\overline{\mathrm{DE}}}$ | $100000$ | Positive $\longrightarrow$ Tensile |
-| $F_{\overline{\mathrm{EF}}}$ | $200000$ | Positive $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{AB}}}$ | $200000$ | Positive $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{AC}}}$ | $-18936.7$ | Negative $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{BC}}}$ | $100000$ | Positive $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{BD}}}$ | $100000$ | Positive $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{CD}}}$ | $-63245.6$ | Negative $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{CE}}}$ | $100000$ | Positive $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{CF}}}$ | $-189736.7$ | Negative $\longrightarrow$ Tensile |
+| $F_{\overline{\mathrm{DE}}}$ | $100000$ | Positive $\longrightarrow$ Compressive |
+| $F_{\overline{\mathrm{EF}}}$ | $200000$ | Positive $\longrightarrow$ Compressive |
 
 And that the reactionary forces at nodes $\mathrm{A}$ and $\mathrm{F}$ are as follows:
 
@@ -228,18 +228,16 @@ shear_stress = abs(normal_stress) ./ 2;         % returns a positive value
 For comparing the stresses to their respective yield conditions, it is useful to automatically separate the `normal_stress` vector into compressive and tensile stresses. This is done as follows:
 
 ```MATLAB
-tensile_stress = normal_stress(normal_stress > 0);            % positive normal stress values
-compressive_stress = abs(normal_stress(normal_stress < 0));   % negative normal stress values
+tensile_stress = normal_stress(normal_stress < 0);            % positive normal stress values
+compressive_stress = abs(normal_stress(normal_stress > 0));   % negative normal stress values
 ```
 
 Note: *these two vectors both contain positive values now*
 
-Then we can calculate the bearing stress, $\sigma_{b} = \displaystyle \frac{F}{A_{\mathrm{bolt}}}$, again separating between compressive and tensile bearing stresses.
+Then we can calculate the bearing stress, $\sigma_{b} = \displaystyle \frac{F}{A_{\mathrm{bolt}}}$
 
 ```MATLAB
-bearing_stress = internal_forces ./ AREA_BOLT;
-tensile_bearing_stress = bearing_stress(bearing_stress > 0);
-compressive_bearing_stress = abs(bearing_stress(bearing_stress < 0));
+bearing_stress = abs(internal_forces) ./ AREA_BOLT;
 ```
 
 From here, we can query whether any of the internal stress exceed their allowable values.
@@ -247,7 +245,7 @@ From here, we can query whether any of the internal stress exceed their allowabl
 ```MATLAB
 TENSILE_FAILUE = any(tensile_stress > TENSILE_YIELD)
 COMPRESSIVE_FAILURE = any(compressive_stress > COMPRESSIVE_YIELD)
-BEARING_FAILURE = any([tensile_bearing_stress > TENSILE_YIELD, compressive_bearing_stress > COMPRESSIVE_YIELD])
+BEARING_FAILURE = any(bearing_stress > COMPRESSIVE_YIELD)
 ```
 
 ## Bridge Optimization

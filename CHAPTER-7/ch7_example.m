@@ -145,12 +145,10 @@ internal_forces = [F_AB F_AC F_BC F_BD F_CD F_CE F_CF F_DE F_EF];
 normal_stress = internal_forces ./ AREA_TRUSS;                % can still be positive or negative
 shear_stress = abs(normal_stress) ./ 2                        % returns a positive value
 
-tensile_stress = normal_stress(normal_stress > 0)             % positive normal stress values
-compressive_stress = abs(normal_stress(normal_stress < 0))    % negative normal stress values
+tensile_stress = normal_stress(normal_stress < 0)             % positive normal stress values
+compressive_stress = abs(normal_stress(normal_stress > 0))    % negative normal stress values
 
-bearing_stress = internal_forces ./ AREA_BOLT;
-tensile_bearing_stress = bearing_stress(bearing_stress > 0)
-compressive_bearing_stress = abs(bearing_stress(bearing_stress < 0))
+bearing_stress = abs(internal_forces) ./ AREA_BOLT
 
 % --------------------------------------------------------------------------- %
 
@@ -160,4 +158,4 @@ compressive_bearing_stress = abs(bearing_stress(bearing_stress < 0))
 
 TENSILE_FAILUE = any(tensile_stress > TENSILE_YIELD)
 COMPRESSIVE_FAILURE = any(compressive_stress > COMPRESSIVE_YIELD)
-BEARING_FAILURE = any([tensile_bearing_stress > TENSILE_YIELD, compressive_bearing_stress > COMPRESSIVE_YIELD])
+BEARING_FAILURE = any(bearing_stress > COMPRESSIVE_YIELD)
