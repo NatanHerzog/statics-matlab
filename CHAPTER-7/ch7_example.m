@@ -19,6 +19,10 @@ SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength 
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
+% <><><>< STRESS CALCULATION FUNCTION ><><><> %
+
+calculate_stress = @(F, A) F ./ A;
+
 % <><><>< BRIDGE BROKEN BOOLEANS ><><><> %
 
   % Initialize these as `false`
@@ -27,6 +31,7 @@ LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B a
 TENSILE_FAILUE = false;                       % used to signal a tensile stress failure
 COMPRESSIVE_FAILUE = false;                   % used to signal a compressive stress failure
 BEARING_FAILURE = false;                      % used to signal a bearing stress failure
+SHEAR_FAILURE = false;                        % used to signal a shear stress failure
 
 % --------------------------------------------------------------------------- %
 
@@ -142,13 +147,13 @@ internal_forces = [F_AB F_AC F_BC F_BD F_CD F_CE F_CF F_DE F_EF];
 
   % calculate the normal (compressive/tensile), shear, and bearing stresses ([Pa])
 
-normal_stress = internal_forces ./ AREA_TRUSS;                % can still be positive or negative
-shear_stress = abs(normal_stress) ./ 2                        % returns a positive value
+  normal_stress = calculate_stress(internal_forces, AREA_TRUSS);  % can still be positive or negative
+  shear_stress = abs(normal_stress) ./ 2;                         % returns a positive value
 
 tensile_stress = normal_stress(normal_stress < 0)             % positive normal stress values
 compressive_stress = abs(normal_stress(normal_stress > 0))    % negative normal stress values
 
-bearing_stress = abs(internal_forces) ./ AREA_BOLT
+bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
 
 % --------------------------------------------------------------------------- %
 
@@ -158,4 +163,5 @@ bearing_stress = abs(internal_forces) ./ AREA_BOLT
 
 TENSILE_FAILUE = any(tensile_stress > TENSILE_YIELD)
 COMPRESSIVE_FAILURE = any(compressive_stress > COMPRESSIVE_YIELD)
+SHEAR_FAILURE = any(shear_stress > SHEAR_YIELD)
 BEARING_FAILURE = any(bearing_stress > COMPRESSIVE_YIELD)

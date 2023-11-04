@@ -45,22 +45,32 @@ With this information, we can go into MATLAB and define global parameters for th
 ```MATLAB
 % <><><>< GENERAL PARAMETERS ><><><> %
 
+  % List out all global variables from the problem
+
 LENGTH = 12;                                  % define the length of the bridge       [m]
 HEIGHT = 2;                                   % define the height of the bridge       [m]
 AREA_TRUSS = 100 * (10^(-2))^2;               % define the cross-sectional area       [m^2]
 BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
-AREA_BOLT = BOLT_DIAMETER * SQRT(AREA_TRUSS); % define the bolt area                  [m^2]
+AREA_BOLT = BOLT_DIAMETER * sqrt(AREA_TRUSS); % define the bolt area                  [m^2]
 TENSILE_YIELD = 500 * 10^6;                   % define the tensile yield strength     [Pa]
 COMPRESSIVE_YIELD = 300 * 10^6;               % define the compressive yield strength [Pa]
 SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength       [Pa]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
+% <><><>< STRESS CALCULATION FUNCTION ><><><> %
+
+calculate_stress = @(F, A) F ./ A;
+
 % <><><>< BRIDGE BROKEN BOOLEANS ><><><> %
+
+  % Initialize these as `false`
+  % They will be toggled to `true` if a corresponding stress exceeds its limit
 
 TENSILE_FAILUE = false;                       % used to signal a tensile stress failure
 COMPRESSIVE_FAILUE = false;                   % used to signal a compressive stress failure
 BEARING_FAILURE = false;                      % used to signal a bearing stress failure
+SHEAR_FAILURE = false;                        % used to signal a shear stress failure
 ```
 
 From here, we can create symbolic variables to represent all of the forces acting throughout the structure. That includes the global reaction forces acting on nodes $\mathrm{A}$ and $\mathrm{F}$, as well as the internal forces within each member. These are laid out as follows:
@@ -221,8 +231,8 @@ internal_forces = [F_AB F_AC F_BC F_BD F_CD F_CE F_CF F_DE F_EF];
 Then the normal stress, $\sigma_{n} = \displaystyle\frac{F}{A_{\mathrm{xs}}}$, and shear stress, $\tau_{n} = \displaystyle\frac{\sigma_{n}}{2}$, are calculated as follows:
 
 ```MATLAB
-normal_stress = internal_forces ./ AREA_TRUSS;  % can still be positive or negative
-shear_stress = abs(normal_stress) ./ 2;         % returns a positive value
+normal_stress = calculate_stress(internal_forces, AREA_TRUSS);  % can still be positive or negative
+shear_stress = abs(normal_stress) ./ 2;                         % returns a positive value
 ```
 
 For comparing the stresses to their respective yield conditions, it is useful to automatically separate the `normal_stress` vector into compressive and tensile stresses. This is done as follows:
@@ -237,7 +247,7 @@ Note: *these two vectors both contain positive values now*
 Then we can calculate the bearing stress, $\sigma_{b} = \displaystyle \frac{F}{A_{\mathrm{bolt}}}$
 
 ```MATLAB
-bearing_stress = abs(internal_forces) ./ AREA_BOLT;
+bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
 ```
 
 From here, we can query whether any of the internal stress exceed their allowable values.
@@ -245,8 +255,20 @@ From here, we can query whether any of the internal stress exceed their allowabl
 ```MATLAB
 TENSILE_FAILUE = any(tensile_stress > TENSILE_YIELD)
 COMPRESSIVE_FAILURE = any(compressive_stress > COMPRESSIVE_YIELD)
+SHEAR_FAILURE = any(shear_stress > SHEAR_YIELD)
 BEARING_FAILURE = any(bearing_stress > COMPRESSIVE_YIELD)
 ```
+
+All of this code, written as a single script in `ch7_example.m`, returns the following Boolean (`true`/`false`) values
+
+| Failure Condition | Value |
+| --- | --- |
+| Tensile | `false` |
+| Compressive | `false` |
+| Shear | `false` |
+| Bearing | `true` |
+
+This indicates that with the given Queen Post truss, constructed with the given member cross-sections and bolts, under the given load, the system will fail in Bearing Stress.
 
 ## Bridge Optimization
 
