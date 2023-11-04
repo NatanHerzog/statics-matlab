@@ -34,11 +34,11 @@ $$A_{\mathrm{bolt}} = t_{\mathrm{truss}}d_{\mathrm{bolt}} = (0.1[\mathrm{m}]) (4
 
 And finally, we define the yield criteria for this truss.
 
-$$\sigma_{y,\mathrm{T}} = 500[\mathrm{MPa}]$$
+$$\sigma_{y,\mathrm{T}} = 19.9[\mathrm{MPa}]$$
 
-$$\sigma_{y,\mathrm{C}} = 300[\mathrm{MPa}]$$
+$$\sigma_{y,\mathrm{C}} = 12.1[\mathrm{MPa}]$$
 
-$$\tau_{y} = 250[\mathrm{MPa}]$$
+$$\tau_{y} = 5[\mathrm{MPa}]$$
 
 With this information, we can go into MATLAB and define global parameters for the solution:
 
@@ -52,9 +52,9 @@ HEIGHT = 2;                                   % define the height of the bridge 
 AREA_TRUSS = 100 * (10^(-2))^2;               % define the cross-sectional area       [m^2]
 BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
 AREA_BOLT = BOLT_DIAMETER * sqrt(AREA_TRUSS); % define the bolt area                  [m^2]
-TENSILE_YIELD = 500 * 10^6;                   % define the tensile yield strength     [Pa]
-COMPRESSIVE_YIELD = 300 * 10^6;               % define the compressive yield strength [Pa]
-SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength       [Pa]
+TENSILE_YIELD = 19.9 * 10^6;                  % define the tensile yield strength     [Pa]
+COMPRESSIVE_YIELD = 12.1 * 10^6;              % define the compressive yield strength [Pa]
+SHEAR_YIELD = 5 * 10^6;                       % define the shear yield strength       [Pa]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
@@ -264,8 +264,8 @@ All of this code, written as a single script in `ch7_example_1.m`, returns the f
 | Failure Condition | Value |
 | --- | --- |
 | Tensile | `false` |
-| Compressive | `false` |
-| Shear | `false` |
+| Compressive | `true` |
+| Shear | `true` |
 | Bearing | `true` |
 
 This indicates that with the given Queen Post truss, constructed with the given member cross-sections and bolts, under the given load, the system will fail in Bearing Stress.

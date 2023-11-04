@@ -32,9 +32,9 @@ A note before you read this demonstration: *The whole code to solve the bridge i
 LENGTH = 12;                                  % define the length of the bridge       [m]
 HEIGHT = 2;                                   % define the height of the bridge       [m]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
-TENSILE_YIELD = 500 * 10^6;                   % define the tensile yield strength     [Pa]
-COMPRESSIVE_YIELD = 300 * 10^6;               % define the compressive yield strength [Pa]
-SHEAR_YIELD = 250 * 10^6;                     % define the shear yield strength       [Pa]
+TENSILE_YIELD = 19.9 * 10^6;                  % define the tensile yield strength     [Pa]
+COMPRESSIVE_YIELD = 12.1 * 10^6;              % define the compressive yield strength [Pa]
+SHEAR_YIELD = 5 * 10^6;                       % define the shear yield strength       [Pa]
 
 % <><><>< BRIDGE BROKEN BOOLEANS ><><><> %
 
@@ -49,7 +49,7 @@ SHEAR_FAILURE = false;                        % used to signal a shear stress fa
 % --------------------------------------------------------------------------- %
 
 % [1] define LOAD
-LOAD = 35 * 10^3;
+LOAD = 10^3;
 
 while ~any([TENSILE_FAILURE, COMPRESSIVE_FAILURE, SHEAR_FAILURE, BEARING_FAILURE])
   % [1, 4] define LOAD, increment it each iteration
@@ -163,4 +163,45 @@ L_tot = 6*sqrt((LENGTH/4)^2 + (HEIGHT/2)^2) + 2*LENGTH/2 + HEIGHT(THETA);
 W = DENSITY * L_tot * AREA_TRUSS * 9.81;
 ```
 
-And we know from the project document that bolts cost
+And for the sake of simplicity, the costs for each component will be taken from the project document (units may change), despite the fact that physical dimensions are completely different. Please refer to the project document for accurate numbers.
+
+| Part | Cost |
+| --- | --- |
+| Balsa | $0.0407 \left[\frac{\$}{\mathrm{m}}\right]$ |
+| Washer | $0.0411 \left[\frac{\$}{\mathrm{washer}}\right]$ |
+| Nut | $0.0457 \left[\frac{\$}{\mathrm{nut}}\right]$ |
+| Bolt | $0.1564 \left[\frac{\$}{\mathrm{bolt}}\right]$ |
+
+Then we can add these values to our `General Parameters` for the script
+
+```MATLAB
+BALSA_CpI = 0.0407;         % Balsa wood cost [$/m]
+WASHER_CpU = 0.0411;        % Washer cost [$/unit]
+NUT_CpU = 0.0457;           % Nut cost [$/unit]
+BOLT_CpU = 0.1564;          % 1.5" Bolt cost [$/unit]
+
+NODE_COUNT = 6;             % Number of nodes
+```
+
+And the total cost of the bridge can be calculated as follows:
+
+$$$$
+
+```MATLAB
+hardware_cost = sum([WASHER_CpU*(2*NODE_COUNT), ...
+                     NUT_CpU*(NODE_COUNT), ...
+                     BOLT_CpU*(NODE_COUNT), ...
+                     BALSA_CpI*(L_tot)]);
+```
+
+Now that we have determined $P$ and solved for both $W$ and $C$, we can solve for the $\mathrm{PI}$.
+
+```MATLAB
+PI = LOAD / (W*hardware_cost);
+```
+
+Now we are ready to iterate over values of $\theta$ by redefining it as a vector of values:
+
+```MATLAB
+THETA = linspace(15, 75); % a range of values in degrees
+```
