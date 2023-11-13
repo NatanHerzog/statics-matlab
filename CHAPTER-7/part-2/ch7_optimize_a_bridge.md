@@ -264,4 +264,8 @@ This adaptation to the code is pretty subtle because it's really just wrapping t
 
 And that's really it! All that's left is plotting and analyzing the results, which are both included at the bottom of the example document, `ch7_example_2.m`. I encourage you to copy my example script and the bridge function, `BRIDGE_MODEL.m`, and then run the example script. You will see printouts with each iteration and then very pretty graphs, as well as printouts regarding the maximum PI and maximum load that the truss is predicted to withstand.
 
+![Bridge PI](../../images/bridge-pi.png)
+
+![Bridge PI](../../images/bridge-load.png)
+
 There will be no practice document for this chapter, primarily because the practice is just your project! So enjoy the process and feel free to ask for help whenever needed!
