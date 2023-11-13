@@ -167,10 +167,10 @@ And for the sake of simplicity, the costs for each component will be taken from 
 
 | Part | Cost |
 | --- | --- |
-| Balsa | $0.0407 \left[\frac{\$}{\mathrm{m}}\right]$ |
-| Washer | $0.0411 \left[\frac{\$}{\mathrm{washer}}\right]$ |
-| Nut | $0.0457 \left[\frac{\$}{\mathrm{nut}}\right]$ |
-| Bolt | $0.1564 \left[\frac{\$}{\mathrm{bolt}}\right]$ |
+| Balsa | 0.0407 [\$/m] |
+| Washer | 0.0411 \$/washer |
+| Nut | 0.0457 \$/nut |
+| Bolt | 0.1564 \$/bolt |
 
 Then we can add these values to our `General Parameters` for the script
 
