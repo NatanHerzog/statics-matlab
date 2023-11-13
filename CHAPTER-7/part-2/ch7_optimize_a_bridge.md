@@ -8,7 +8,7 @@ Previously, I analyzed a Queen Post truss at a single load. But for your project
 
 Well, slowly increasing a variable until reaching a condition is the *perfect* scenario for implementing a loop! Refer back to `ch5_plan.md` and `ch6_plan.md` for some simple examples of this.
 
-Fow now, we can write a pseudo-code version just to wrap our heads around what will actually be happening here.
+For now, we can write a pseudo-code version just to wrap our heads around what will actually be happening here.
 
 ```MATLAB
 % [1] define LOAD at some low value to start off with
@@ -128,15 +128,15 @@ We can define the lengths of every member in the bridge as follows:
 
 | Member | Length Formula |
 | --- | --- |
-| $\overline{AB}$ | `L_AB = norm([LENGTH//4, HEIGHT/2])` |
-| $\overline{AC}$ | `L_AC = norm([LENGTH//2, 0])` |
-| $\overline{BC}$ | `L_BC = norm([LENGTH//4, HEIGHT/2])` |
-| $\overline{BD}$ | `L_BD = norm([LENGTH//4, HEIGHT/2])` |
-| $\overline{CD}$ | `L_CD = norm([0, HEIGHT])` |
-| $\overline{CE}$ | `L_CE = norm([LENGTH//4, HEIGHT/2])` |
-| $\overline{CF}$ | `L_CF = norm([LENGTH//2, ])` |
-| $\overline{DE}$ | `L_DE = norm([LENGTH//4, HEIGHT/2])` |
-| $\overline{EF}$ | `L_EF = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{AB}}$ | `L_AB = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{AC}}$ | `L_AC = norm([LENGTH//2, 0])` |
+| $\mathrm{\overline{BC}}$ | `L_BC = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{BD}}$ | `L_BD = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{CD}}$ | `L_CD = norm([0, HEIGHT])` |
+| $\mathrm{\overline{CE}}$ | `L_CE = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{CF}}$ | `L_CF = norm([LENGTH//2, ])` |
+| $\mathrm{\overline{DE}}$ | `L_DE = norm([LENGTH//4, HEIGHT/2])` |
+| $\mathrm{\overline{EF}}$ | `L_EF = norm([LENGTH//4, HEIGHT/2])` |
 
 And remember that `HEIGHT` is going to change as a function of $\theta$.
 
@@ -175,7 +175,7 @@ And for the sake of simplicity, the costs for each component will be taken from 
 Then we can add these values to our `General Parameters` for the script
 
 ```MATLAB
-BALSA_CpI = 0.0407;         % Balsa wood cost [$/m]
+BALSA_CpL = 0.0407;         % Balsa wood cost [$/m]
 WASHER_CpU = 0.0411;        % Washer cost [$/unit]
 NUT_CpU = 0.0457;           % Nut cost [$/unit]
 BOLT_CpU = 0.1564;          % 1.5" Bolt cost [$/unit]
@@ -191,7 +191,7 @@ $$$$
 hardware_cost = sum([WASHER_CpU*(2*NODE_COUNT), ...
                      NUT_CpU*(NODE_COUNT), ...
                      BOLT_CpU*(NODE_COUNT), ...
-                     BALSA_CpI*(L_tot)]);
+                     BALSA_CpL*(L_tot)]);
 ```
 
 Now that we have determined $P$ and solved for both $W$ and $C$, we can solve for the $\mathrm{PI}$.
@@ -203,5 +203,65 @@ PI = LOAD / (W*hardware_cost);
 Now we are ready to iterate over values of $\theta$ by redefining it as a vector of values:
 
 ```MATLAB
-THETA = linspace(15, 75); % a range of values in degrees
+THETA = linspace(15, 75); % a range of theta values in degrees
 ```
+
+Then the entire code above can be evaluated for each value of $\theta$ using a `for` loop, as shown below.
+
+*Note: For visual simplicity, I will represent everything that has already been covered with a comment block. Know that the code is still there, it is just too long to make sense of what I'm actually doing in this step if I include it.*
+
+```MATLAB
+% --------------------------------------------------------------------------- %
+
+% <><><>< GENERAL PARAMETERS ><><><> %
+
+% ----- all other parameters omitted for visual clarity ----- %
+
+THETA = linspace(15, 75);     % a range of theta values in degrees
+INITIAL_LOAD = 1000;          % [N]
+
+% --------------------------------------------------------------------------- %
+
+% <><><>< SOLVE THE BRIDGE ><><><> %
+
+% Initialize arrays to store results
+PI = zeros(length(THETA), 1);
+max_load = zeros(length(THETA), 1);
+
+for i = 1:length(THETA)
+  theta = THETA(i);
+  % [1] define LOAD
+  LOAD = INITIAL_LOAD;
+
+  % --------------------------------------------------- %
+  % ----- while loop for maximum load calculation ----- %
+  % --------------------------------------------------- %
+
+  % Calculate total length, weight, and cost
+  L_tot = 6*sqrt((LENGTH/4)^2 + (HEIGHT(theta)/2)^2) + 2*LENGTH/2 + HEIGHT(theta);
+  W = DENSITY * L_tot * AREA_TRUSS * 9.81;
+  hardware_cost = sum([WASHER_CpU*(2*NODE_COUNT), ...
+    NUT_CpU*(NODE_COUNT), ...
+    BOLT_CpU*(NODE_COUNT), ...
+    BALSA_CpI*(L_tot)]);
+
+  % Store PI and maximum load to plot
+  PI(i) = LOAD / (W*hardware_cost);
+  max_load(i) = LOAD;
+
+  % reset the initial load for the next iteration of theta
+  INITIAL_LOAD = LOAD - 10;
+
+  % reset the failure condition booleans for the next iteration of theta
+  TENSILE_FAILURE = false;
+  COMPRESSIVE_FAILURE = false;
+  SHEAR_FAILURE = false;
+  BEARING_FAILURE = false;
+end
+```
+
+This adaptation to the code is pretty subtle because it's really just wrapping the `while` loop from before inside of a `for` loop. At the end of the `for` loop iteration, it is very important to reset the values for the four `boolean` failure variables to make sure that the next iteration starts fresh. And to save simulation time, it is helpful to reset `INITIAL_LOAD` as well because it is a safe assumption that increasing $\theta$ will increase the maximum allowable load for the structure.
+
+And that's really it! All that's left is plotting and analyzing the results, which are both included at the bottom of the example document, `ch7_example_2.m`. I encourage you to copy my example script and the bridge function, `BRIDGE_MODEL.m`, and then run the example script. You will see printouts with each iteration and then very pretty graphs, as well as printouts regarding the maximum PI and maximum load that the truss is predicted to withstand.
+
+There will be no practice document for this chapter, primarily because the practice is just your project! So enjoy the process and feel free to ask for help whenever needed!

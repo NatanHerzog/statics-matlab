@@ -15,4 +15,3 @@
 
 - Modeling a bridge in MATLAB
 - Bridge Optimization
-- Piston Torque
