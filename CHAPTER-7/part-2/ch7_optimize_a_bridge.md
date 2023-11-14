@@ -34,7 +34,7 @@ HEIGHT = 2;                                   % define the height of the bridge 
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 TENSILE_YIELD = 19.9 * 10^6;                  % define the tensile yield strength     [Pa]
 COMPRESSIVE_YIELD = 12.1 * 10^6;              % define the compressive yield strength [Pa]
-SHEAR_YIELD = 5 * 10^6;                       % define the shear yield strength       [Pa]
+SHEAR_YIELD = 1.9 * 10^6;                     % define the shear yield strength       [Pa]
 
 % <><><>< BRIDGE BROKEN BOOLEANS ><><><> %
 

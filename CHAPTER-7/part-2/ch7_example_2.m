@@ -26,7 +26,7 @@ THETA = linspace(THETA_START, THETA_END, THETA_END - THETA_START + 1);
 
 TENSILE_YIELD = 19.9 * 10^6;                  % define the tensile yield strength       [Pa]
 COMPRESSIVE_YIELD = 12.1 * 10^6;              % define the compressive yield strength   [Pa]
-SHEAR_YIELD = 5 * 10^6;                       % define the shear yield strength         [Pa]
+SHEAR_YIELD = 1.9 * 10^6;                     % define the shear yield strength         [Pa]
 DENSITY = 150;                                % define the density                      [kg/m^3]
 
 BALSA_CpI = 0.0407;                           % Balsa wood cost                         [$/m]

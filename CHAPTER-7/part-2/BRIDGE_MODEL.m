@@ -4,9 +4,11 @@ function [tensile_stress, compressive_stress, shear_stress, bearing_stress] = BR
 
   % <><><>< GENERAL PARAMETERS ><><><> %
 
-  AREA_TRUSS = 100 * (10^(-2))^2;               % define the cross-sectional area       [m^2]
+  TRUSS_WIDTH = 10 * 10^(-2);                   % define the cross-sectional edge       [m^2]
   BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
-  AREA_BOLT = BOLT_DIAMETER * sqrt(AREA_TRUSS); % define the bolt area                  [m^2]
+  T_AREA = (TRUSS_WIDTH)*(TRUSS_WIDTH - BOLT_DIAMETER);
+  C_AREA = (TRUSS_WIDTH)^2;
+  AREA_BOLT = BOLT_DIAMETER * TRUSS_WIDTH;      % define the bolt area                  [m^2]
 
   % <><><>< STRESS CALCULATION FUNCTION ><><><> %
 
@@ -123,12 +125,9 @@ function [tensile_stress, compressive_stress, shear_stress, bearing_stress] = BR
 
     % calculate the normal (compressive/tensile), shear, and bearing stresses ([Pa])
 
-  normal_stress = calculate_stress(internal_forces, AREA_TRUSS);  % can still be positive or negative
-  shear_stress = abs(normal_stress) ./ 2;                         % returns a positive value
-
-  tensile_stress = normal_stress(normal_stress < 0);              % positive normal stress values
-  compressive_stress = abs(normal_stress(normal_stress > 0));     % negative normal stress values
-
-  bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
+    tensile_stress = calculate_stress(internal_forces(internal_forces < 0), T_AREA);
+    compressive_stress = calculate_stress(internal_forces(internal_forces > 0), C_AREA);
+    shear_stress = abs([tensile_stress, compressive_stress]) ./ 2;
+    bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
 
 end

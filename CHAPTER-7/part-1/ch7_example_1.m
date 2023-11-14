@@ -152,7 +152,6 @@ internal_forces = [F_AB F_AC F_BC F_BD F_CD F_CE F_CF F_DE F_EF];
 tensile_stress = calculate_stress(internal_forces(internal_forces < 0), T_AREA);
 compressive_stress = calculate_stress(internal_forces(internal_forces > 0), C_AREA);
 shear_stress = abs([tensile_stress, compressive_stress]) ./ 2;
-
 bearing_stress = calculate_stress(abs(internal_forces), AREA_BOLT);
 
 % --------------------------------------------------------------------------- %
