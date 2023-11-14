@@ -103,12 +103,19 @@ end
 
 % <><><>< PLOT AND ANALYZE ><><><> %
 
-figure(1)
+figure(1);
 plot(THETA, PI, 'o--r')
 xlim([0, 90])
 ylabel('PI $\left[\frac{1}{\$}\right]$', 'Interpreter', 'latex')
 xlabel('Angle $\theta\,[^{\circ}]$', 'Interpreter', 'latex')
 title('Example Bridge PI versus angle $\theta$', 'Interpreter', 'latex')
+pbaspect([2,1,1])
+set(gca,'FontSize',10, 'FontName', 'Times New Roman')
+set(gcf,'PaperUnits','centimeters')
+set(gcf,'PaperSize',[20 10])
+set(gcf,'PaperPosition',[0 0 20 10])
+set(gcf,'PaperOrientation','portrait')
+print('performance-index', '-dpng')
 
 [max_performance, location] = max(PI);
 optimal_angle = THETA(location);
@@ -118,11 +125,39 @@ fprintf('The bridge achieves a maximum Performance Index of %.3f at an angle %d 
 fprintf('It is expected to support %0.2f [N]\n', expected_load)
 
 figure(2)
-plot(THETA, max_load, 'o--r')
+plot(THETA, max_load, 'o--b')
 xlim([0, 90])
 ylabel('Maximum Load $\left[N\right]$', 'Interpreter', 'latex')
 xlabel('Angle $\theta\,[^{\circ}]$', 'Interpreter', 'latex')
-title('Example Bridge Maximum Load verus angle $\theta$', 'Interpreter', 'latex')
+title('Example Bridge Maximum Load versus angle $\theta$', 'Interpreter', 'latex')
+pbaspect([2,1,1])
+set(gca,'FontSize',10, 'FontName', 'Times New Roman')
+set(gcf,'PaperUnits','centimeters')
+set(gcf,'PaperSize',[20 10])
+set(gcf,'PaperPosition',[0 0 20 10])
+set(gcf,'PaperOrientation','portrait')
+print('max-load', '-dpng')
+
+figure(3)
+colororder({'r','b'})
+yyaxis left
+plot(THETA, PI, 'o--r')
+y1 = ylabel('PI $\left[\frac{1}{\$}\right]$', 'Interpreter', 'latex');
+hold on
+yyaxis right
+plot(THETA, max_load./1000, 'o--b')
+y2 = ylabel('Maximum Load $\left[\mathrm{kN}\right]$', 'Interpreter', 'latex');
+xlim([0, 90])
+xlabel('Angle $\theta\,[^{\circ}]$', 'Interpreter', 'latex')
+title('Example Bridge PI and Maximum Load versus angle $\theta$', 'Interpreter', 'latex')
+legend('PI', 'Max Load', 'Location', 'northwest')
+pbaspect([2,1,1])
+set(gca,'FontSize',10, 'FontName', 'Times New Roman')
+set(gcf,'PaperUnits','centimeters')
+set(gcf,'PaperSize',[20 10])
+set(gcf,'PaperPosition',[0 0 20 10])
+set(gcf,'PaperOrientation','portrait')
+print('both-graphs', '-dpng')
 
 simulation_end = toc(simulation_start);
 fprintf('Total Simulation Time : %0.2f', simulation_end)
