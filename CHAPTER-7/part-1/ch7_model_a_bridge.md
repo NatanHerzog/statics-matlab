@@ -49,12 +49,14 @@ With this information, we can go into MATLAB and define global parameters for th
 
 LENGTH = 12;                                  % define the length of the bridge       [m]
 HEIGHT = 2;                                   % define the height of the bridge       [m]
-AREA_TRUSS = 100 * (10^(-2))^2;               % define the cross-sectional area       [m^2]
+TRUSS_WIDTH = 10 * 10^(-2);                   % define the cross-sectional edge       [m^2]
 BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
-AREA_BOLT = BOLT_DIAMETER * sqrt(AREA_TRUSS); % define the bolt area                  [m^2]
+T_AREA = (TRUSS_WIDTH)*(TRUSS_WIDTH - BOLT_DIAMETER);
+C_AREA = (TRUSS_WIDTH)^2;
+AREA_BOLT = BOLT_DIAMETER * TRUSS_WIDTH;      % define the bolt area                  [m^2]
 TENSILE_YIELD = 19.9 * 10^6;                  % define the tensile yield strength     [Pa]
 COMPRESSIVE_YIELD = 12.1 * 10^6;              % define the compressive yield strength [Pa]
-SHEAR_YIELD = 5 * 10^6;                       % define the shear yield strength       [Pa]
+SHEAR_YIELD = 1.9 * 10^6;                     % define the shear yield strength       [Pa]
 THETA = atand(HEIGHT / (LENGTH/2));           % define the angle theta
 LOAD = 10 * norm([6,2]) * 10^3;               % define the load that acts on B and E  [N]
 
@@ -230,19 +232,13 @@ internal_forces = [F_AB F_AC F_BC F_BD F_CD F_CE F_CF F_DE F_EF];
 
 Then the normal stress, $\sigma_{n} = \displaystyle\frac{F}{A_{\mathrm{xs}}}$, and shear stress, $\tau_{n} = \displaystyle\frac{\sigma_{n}}{2}$, are calculated as follows:
 
-```MATLAB
-normal_stress = calculate_stress(internal_forces, AREA_TRUSS);  % can still be positive or negative
-shear_stress = abs(normal_stress) ./ 2;                         % returns a positive value
-```
-
-For comparing the stresses to their respective yield conditions, it is useful to automatically separate the `normal_stress` vector into compressive and tensile stresses. This is done as follows:
+For comparing the stresses to their respective yield conditions, it is important to distinguish between compressive and tensile stresses. Note that the areas through which these two types of stresses exist are different.
 
 ```MATLAB
-tensile_stress = normal_stress(normal_stress < 0);            % positive normal stress values
-compressive_stress = abs(normal_stress(normal_stress > 0));   % negative normal stress values
+tensile_stress = calculate_stress(internal_forces(internal_forces < 0), T_AREA);
+compressive_stress = calculate_stress(internal_forces(internal_forces > 0), C_AREA);
+shear_stress = abs([tensile_stress, compressive_stress]) ./ 2;
 ```
-
-Note: *these two vectors both contain positive values now*
 
 Then we can calculate the bearing stress, $\sigma_{b} = \displaystyle \frac{F}{A_{\mathrm{bolt}}}$
 

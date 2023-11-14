@@ -14,7 +14,11 @@ simulation_start = tic;
 
 LENGTH = 12;                                  % length of the bridge                    [m]
 HEIGHT = @(t) tand(t) * LENGTH/2;             % height of the bridge                    [m]
-AREA_TRUSS = 100 * (10^(-2))^2;               % cross-sectional area                    [m^2]
+TRUSS_WIDTH = 10 * 10^(-2);                   % define the cross-sectional edge       [m^2]
+BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
+T_AREA = (TRUSS_WIDTH)*(TRUSS_WIDTH - BOLT_DIAMETER);
+C_AREA = (TRUSS_WIDTH)^2;
+AREA_BOLT = BOLT_DIAMETER * TRUSS_WIDTH;      % define the bolt area                  [m^2]
 INITIAL_LOAD = 1000;                          % initial load for the first iteration    [N]
 THETA_START = 15;                             % beginning of the theta array            [deg]
 THETA_END = 75;                               % end of the theta array                  [deg]
@@ -79,7 +83,7 @@ for i = 1:length(THETA)
   fprintf('The bridge, angle %d, failed at a load of %d [N]\n\n', theta, LOAD)    % print out the LOAD at which the bridge failed
 
   L_tot = 6*sqrt((LENGTH/4)^2 + (HEIGHT(theta)/2)^2) + 2*LENGTH/2 + HEIGHT(theta);
-  W = DENSITY * L_tot * AREA_TRUSS * 9.81;
+  W = DENSITY * L_tot * C_AREA * 9.81;
   hardware_cost = sum([WASHER_CpU*(2*NODE_COUNT), ...
     NUT_CpU*(NODE_COUNT), ...
     BOLT_CpU*(NODE_COUNT), ...
