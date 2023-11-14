@@ -38,7 +38,7 @@ $$\sigma_{y,\mathrm{T}} = 19.9[\mathrm{MPa}]$$
 
 $$\sigma_{y,\mathrm{C}} = 12.1[\mathrm{MPa}]$$
 
-$$\tau_{y} = 5[\mathrm{MPa}]$$
+$$\tau_{y} = 1.9[\mathrm{MPa}]$$
 
 With this information, we can go into MATLAB and define global parameters for the solution:
 

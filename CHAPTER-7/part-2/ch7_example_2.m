@@ -14,11 +14,11 @@ simulation_start = tic;
 
 LENGTH = 12;                                  % length of the bridge                    [m]
 HEIGHT = @(t) tand(t) * LENGTH/2;             % height of the bridge                    [m]
-TRUSS_WIDTH = 10 * 10^(-2);                   % define the cross-sectional edge       [m^2]
-BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter              [m]
+TRUSS_WIDTH = 10 * 10^(-2);                   % define the cross-sectional edge         [m^2]
+BOLT_DIAMETER = 4.1656 * 10^(-3);             % define the bolt diameter                [m]
 T_AREA = (TRUSS_WIDTH)*(TRUSS_WIDTH - BOLT_DIAMETER);
 C_AREA = (TRUSS_WIDTH)^2;
-AREA_BOLT = BOLT_DIAMETER * TRUSS_WIDTH;      % define the bolt area                  [m^2]
+AREA_BOLT = BOLT_DIAMETER * TRUSS_WIDTH;      % define the bolt area                    [m^2]
 INITIAL_LOAD = 1000;                          % initial load for the first iteration    [N]
 THETA_START = 15;                             % beginning of the theta array            [deg]
 THETA_END = 75;                               % end of the theta array                  [deg]
