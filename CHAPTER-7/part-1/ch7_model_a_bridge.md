@@ -38,17 +38,29 @@ $$A_{\mathrm{bolt}} = t_{\mathrm{truss}}d_{\mathrm{bolt}} = (0.1[\mathrm{m}]) (4
 
 ### Tensions vs. Compression
 
-Unfortunately, the areas through which tensile and compressive forces act are not the same. This is because we have to consider the minimum cross-sectional area of the member that exists between the application of the force.
+The areas through which tensile and compressive forces act are not the same as each other. This is illustrated in the figures below, where the highlighted face(s) represent the plane through which each force acts, respectively.
 
-For compressive forces, the bolt acts directly on the whole cross-sectional area, as seen here:
+These regions are determined to be the smallest area through which each respective load acts when considering the section of the member contained between the two locations at which the bolts act on the member.
 
-![Full Member under Compression](../../images/truss-member-compression.png)
+#### Compression
+
+That is to say that in compression, the bolt acts inwards on the member, so the tangent cross-section shown below is the plane through which it acts.
+
+![Member under Compression](../../images/truss-member-compression.png)
 
 The bolt applies a load equal to the internal reactionary force of the member (we will find later) upon the entire flat contact face shown in this image. We already defined this area to be $A_{\mathrm{xs}}$, so $A_{\mathrm{C}} = A_{\mathrm{xs}}$
 
-![Full Member under Tension](../../images/truss-member-tension.png)
+#### Tension
 
-It is visually clear that the area over which the tensile force is applied is segmented by the presence of the bolt. Therefore, the area of consideration for all members under tension is found as follows:
+However, the tensile force acts on the tangent cross-section on the opposite side of the bolt.
+
+![Application of Tensile Force](../../images/truss-member-tension-section.png)
+
+Well, if we look at the whole section of the member that exists within the plane shown and its symmetric counterpart at the other bolt, we can see that the regions directly above and below the bolt represent the smallest cross-section. This is shown below.
+
+![Member under Tension](../../images/truss-member-tension.png)
+
+Given that this is the region of the member with the smallest area, this is what we should use to evaluate the maximum average tensile stress in the member. We calculate its area as follows:
 
 $$A_{\mathrm{T}} = (t_{\mathrm{truss}})(t_{\mathrm{truss}} - d_{\mathrm{bolt}})$$
 
