@@ -10,6 +10,8 @@ That is important because we model truss structures as a large system of equatio
 
 There are $6$ total nodes in this truss structure: $\mathrm{A}$, $\mathrm{B}$, $\mathrm{C}$, $\mathrm{D}$, $\mathrm{E}$, and $\mathrm{F}$. We will solve for all of the forces acting within this truss by applying the Method of Joints at each node. And unlike the the TopHat textbook, we will make use of the `Symbolic Toolbox` to cast equations symbolically and solve the system much more simply.
 
+### Organize global parameters
+
 Before solving for any forces, let's quickly determine the value of $\theta$ by analyzing the geometry of the bridge.
 
 $$\theta = \tan^{-1}\left(\displaystyle\frac{1[\mathrm{m}]}{3[\mathrm{m}]}\right) = 18.4349^{\circ}$$
@@ -20,7 +22,9 @@ $$L_{\overline{\mathrm{AD}}} = L_{\overline{\mathrm{DF}}} = \sqrt{6^2 + 2^2} = \
 
 $$\Vert R\Vert = 10\left[\frac{\mathrm{kN}}{\mathrm{m}}\right] 6.3246[\mathrm{m}] = 63.246[\mathrm{kN}]$$
 
-And for simplicity, we will take the cross-sectional area of all members in the structure to be:
+### Area calculations
+
+For simplicity, we will take the cross-sectional area of all members in the structure to be:
 
 $$A_{\mathrm{xs}} = 10 [\mathrm{cm}]\times 10 [\mathrm{cm}] = 100 [\mathrm{cm}^2]$$
 
@@ -31,6 +35,26 @@ $$d_{\mathrm{bolt}} = 0.164 [\mathrm{in}] = 4.1656 [\mathrm{mm}]$$
 which leads to the area of the bolt, $A_{\mathrm{bolt}}$, to be found as follows:
 
 $$A_{\mathrm{bolt}} = t_{\mathrm{truss}}d_{\mathrm{bolt}} = (0.1[\mathrm{m}]) (4.1656\times10^{-3} [\mathrm{m}]) = 4.1656\times10^{-4} [\mathrm{m}^2]$$
+
+### Tensions vs. Compression
+
+Unfortunately, the areas through which tensile and compressive forces act are not the same. This is because we have to consider the minimum cross-sectional area of the member that exists between the application of the force.
+
+For compressive forces, the bolt acts directly on the whole cross-sectional area, as seen here:
+
+![Full Member under Compression](../../images/truss-member-compression.png)
+
+The bolt applies a load equal to the internal reactionary force of the member (we will find later) upon the entire flat contact face shown in this image. We already defined this area to be $A_{\mathrm{xs}}$, so $A_{\mathrm{C}} = A_{\mathrm{xs}}$
+
+![Full Member under Tension](../../images/truss-member-tension.png)
+
+It is visually clear that the area over which the tensile force is applied is segmented by the presence of the bolt. Therefore, the area of consideration for all members under tension is found as follows:
+
+$$A_{\mathrm{T}} = (t_{\mathrm{truss}})(t_{\mathrm{truss}} - d_{\mathrm{bolt}})$$
+
+This distinction is important for maintaining an accurate representation of the stresses present within the member.
+
+### Yield conditions
 
 And finally, we define the yield criteria for this truss.
 
