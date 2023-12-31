@@ -8,27 +8,27 @@ For example, when considering the moment acting on a car's wheel, we may be part
 
 Or when considering the force on an airplane wing in flight, we may want to decompose it into components that lie parallel and perpendicular to the wing itself.
 
-As we learned in class, the formula for the projection of $\vec{a}$ along the direction of $\vec{b}$, which starts at the origin and ends at point $b$. Let's call this $\vec{p}_{\overline{ob}}$, and define it is as follows:
+As we learned in class, the formula for the projection of $\vec{a}$ along the direction of $\vec{b}$, which starts at the origin and ends at point $b$. Let's call this $\vec{p}_{\mathrm{\overline{ob}}}$, and define it is as follows:
 
-$$\vec{p}_{\overline{ob}} = \left(\vec{a}\cdot\hat{e}_{\overline{ob}}\right)\hat{e}_{\overline{ob}}$$
+$$\vec{p}_{\mathrm{\overline{ob}}} = \left(\vec{a}\cdot\hat{e}_{\mathrm{\overline{ob}}}\right)\hat{e}_{\mathrm{\overline{ob}}}$$
 
-And recall that $\hat{e}_{\overline{ob}}$ is the unit direction vector along $\overline{ob}$, which can be calculated as follows:
+And recall that $\hat{e}_{\mathrm{\overline{ob}}}$ is the unit direction vector along $\mathrm{\overline{ob}}$, which can be calculated as follows:
 
-$$\hat{e}_{\overline{ob}} = \frac{\overline{ob}}{\Vert\overline{ob}\Vert}$$
+$$\hat{e}_{\mathrm{\overline{ob}}} = \frac{\mathrm{\overline{ob}}}{\Vert\mathrm{\overline{ob}}\Vert}$$
 
 When done by hand, vector projection can be very tedious. Here are all the steps involved:
 
-$$\Vert\overline{ob}\Vert = \sqrt{(b_x)^2 + (b_y)^2 + (b_z)^2}$$
+$$\Vert\mathrm{\overline{ob}}\Vert = \sqrt{(b_x)^2 + (b_y)^2 + (b_z)^2}$$
 
 $$
-\vec{p}_{\overline{ob}} =
+\vec{p}_{\mathrm{\overline{ob}}} =
 \left(
   \begin{bmatrix}
   a_x & a_y & a_z
   \end{bmatrix}
   \cdot
   \left(
-    \frac{1}{\Vert \overline{ob} \Vert}
+    \frac{1}{\Vert \mathrm{\overline{ob}} \Vert}
     \begin{bmatrix}
     b_x \\
     b_y \\
@@ -37,7 +37,7 @@ $$
   \right)
 \right)
 \left(
-  \frac{1}{\Vert \overline{ob} \Vert}
+  \frac{1}{\Vert \mathrm{\overline{ob}} \Vert}
   \begin{bmatrix}
   b_x \\
   b_y \\
@@ -47,8 +47,8 @@ $$
 $$
 
 $$
-\vec{p}_{\overline{ob}} =
-\left(\frac{(a_x)(b_x) + (a_y)(b_y) + (a_z)(b_z)}{\Vert \overline{ob}\Vert^2}\right)
+\vec{p}_{\mathrm{\overline{ob}}} =
+\left(\frac{(a_x)(b_x) + (a_y)(b_y) + (a_z)(b_z)}{\Vert \mathrm{\overline{ob}}\Vert^2}\right)
 \begin{bmatrix}
 b_x \\
 b_y \\
@@ -56,14 +56,14 @@ b_z
 \end{bmatrix}
 $$
 
-Taking advantage of MATLAB simplifies the work greatly:
+Taking advantage of `MATLAB` simplifies the work greatly:
 
 ```MATLAB
-a = [1, 1, 1]; % define vector a
-b = [1, 0, 0]; % define vector b
-normB = norm(b); % calculate the magnitude of b
-e_ob = b./normB; % get the unit direction vector for b
-proj = e_ob.*(dot(a, e_ob)); % perform the projection of a onto b
+a = [1, 1, 1];                % define vector a
+b = [1, 0, 0];                % define vector b
+normB = norm(b);              % calculate the magnitude of b
+e_ob = b./normB;              % get the unit direction vector for b
+proj = e_ob.*(dot(a, e_ob));  % perform the projection of a onto b
 ```
 
 `output: proj = [1, 0, 0]`
